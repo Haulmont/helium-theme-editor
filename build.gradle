@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.1.0-SNAPSHOT' 
+    bomVersion = '1.1.0-SNAPSHOT'
     projectId = 'helium'
 }
 
@@ -15,22 +15,24 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-    mavenCentral() 
+    mavenCentral()
     maven {
         url 'https://nexus.jmix.io/repository/public'
-    } 
+    }
 }
 
 dependencies {
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.ui:jmix-ui-starter'
-    implementation 'io.jmix.ui:jmix-ui-themes-compiled'
     implementation 'io.jmix.ui:jmix-ui-widgets-compiled'
     implementation 'io.jmix.sessions:jmix-sessions-starter'
+    implementation 'io.jmix.ui:jmix-ui-themes'
 
     implementation 'org.apache.commons:commons-dbcp2'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    themes 'io.jmix.ui:jmix-ui-themes'
 
     runtimeOnly 'org.hsqldb:hsqldb'
 
