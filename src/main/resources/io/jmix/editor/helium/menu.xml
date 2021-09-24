@@ -2,7 +2,6 @@
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
 
     <menu id="application" caption="msg://io.jmix.editor.helium/menu.application" insertBefore="administration">
-        <item screen="helium_User.browse" caption="msg://io.jmix.editor.helium.screen.user/UserBrowse.caption"/>
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
     </menu>
 
