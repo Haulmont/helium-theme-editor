@@ -27,7 +27,9 @@ dependencies {
     implementation 'io.jmix.ui:jmix-ui-starter'
     implementation 'io.jmix.ui:jmix-ui-themes-compiled'
     implementation 'io.jmix.ui:jmix-ui-widgets-compiled'
+    implementation 'io.jmix.sessions:jmix-sessions-starter'
 
+    implementation 'org.apache.commons:commons-dbcp2'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     runtimeOnly 'org.hsqldb:hsqldb'

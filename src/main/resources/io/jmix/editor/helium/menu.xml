@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
-
-    <menu id="application" caption="msg://io.jmix.editor.helium/menu.application" insertBefore="administration">
-        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
-    </menu>
-
 </menu-config>
