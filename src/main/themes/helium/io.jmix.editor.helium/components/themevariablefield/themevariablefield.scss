@@ -1,4 +1,4 @@
-@mixin helium-ext-themevariablefield($primary-stylename: theme-variable-field) {
+@mixin ext-helium-themevariablefield($primary-stylename: theme-variable-field) {
 
   .#{$primary-stylename} {
     & .jmix-fglayout-slot {

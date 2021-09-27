@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout expand="previewTabSheet" spacing="true">
+        <tabSheet id="previewTabSheet" width="100%" stylename="preview-tab-sheet">
+            <tab id="basicFunctionalityBox" caption="msg://basicFunctionalityBox.caption" spacing="true" margin="true"
+                 expand="innerPreviewBox">
+                <hbox id="sizeBox" spacing="true">
+                    <radioButtonGroup id="sizeField"
+                                      align="MIDDLE_LEFT"
+                                      orientation="horizontal"/>
+                </hbox>
+                <scrollBox id="innerPreviewBox" height="100%" width="100%" spacing="true">
+                    <cssLayout stylename="preview-box" width="100%" responsive="true">
+                        <vbox id="buttonsBox" margin="true" stylename="card buttons-box" height="300px">
+                            <vbox spacing="true" align="MIDDLE_CENTER" width="AUTO">
+                                <flowBox spacing="true">
+                                    <button caption="OK" icon="OK" stylename="primary" description="Primary"/>
+                                    <button caption="Cancel" icon="CANCEL" description="Default"/>
+                                </flowBox>
+                                <flowBox spacing="true">
+                                    <button caption="Save" icon="SAVE" stylename="friendly" description="Friendly"/>
+                                    <button caption="Remove" icon="REMOVE" stylename="danger" description="Danger"/>
+                                    <button caption="Secondary" stylename="secondary" description="Secondary"/>
+                                </flowBox>
+                            </vbox>
+                        </vbox>
+                        <vbox id="textFieldsBox" margin="true" stylename="card textfields-box" height="300px">
+                            <vbox spacing="true" align="MIDDLE_CENTER" width="AUTO">
+                                <textField caption="TextField" inputPrompt="Placeholder"/>
+                                <textField caption="TextField | Required" required="true"/>
+                            </vbox>
+                        </vbox>
+                        <vbox id="tabSheetsBox" margin="true" stylename="card tabsheets-box" height="300px">
+                            <vbox spacing="true" align="MIDDLE_CENTER">
+                                <tabSheet height="100px" width="100%">
+                                    <tab id="tab11"
+                                         caption="Tab 1"/>
+                                    <tab id="tab12"
+                                         caption="Tab 2"/>
+                                    <tab id="tab13"
+                                         caption="Tab 3"/>
+                                </tabSheet>
+                                <tabSheet height="100px" width="100%" stylename="framed">
+                                    <tab id="tab21"
+                                         caption="Tab 1"/>
+                                    <tab id="tab22"
+                                         caption="Tab 2"/>
+                                    <tab id="tab23"
+                                         caption="Tab 3"/>
+                                </tabSheet>
+                            </vbox>
+                        </vbox>
+                        <vbox id="comboBoxesBox" margin="true" stylename="card comboboxes-box" height="300px">
+                            <vbox spacing="true" align="MIDDLE_CENTER" width="AUTO">
+                                <comboBox id="basicComboBox"
+                                          caption="ComboBox"
+                                          inputPrompt="Placeholder"/>
+                                <comboBox id="basicRequiredComboBox"
+                                          caption="ComboBox | Required"
+                                          required="true"/>
+                            </vbox>
+                        </vbox>
+                        <vbox id="notificationsBox" margin="true" stylename="card notifications-box" width="100%">
+                            <flowBox width="100%">
+                                <htmlBox align="MIDDLE_CENTER" template="notifications/humanized-notification"/>
+                                <htmlBox align="MIDDLE_CENTER" template="notifications/system-notification"/>
+                                <htmlBox align="MIDDLE_CENTER" template="notifications/warning-notification"/>
+                                <htmlBox align="MIDDLE_CENTER" template="notifications/error-notification"/>
+                            </flowBox>
+                        </vbox>
+                        <vbox id="labelsBox" margin="true" stylename="card labels-box" height="300px">
+                            <vbox spacing="true" align="MIDDLE_CENTER">
+                                <label value="Header 1" stylename="h1"/>
+                                <label value="Header 2" stylename="h2"/>
+                                <label value="Header 3" stylename="h3"/>
+                                <label value="Header 4" stylename="h4"/>
+                                <label value="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                                       width="100%"/>
+                            </vbox>
+                        </vbox>
+                        <vbox id="tableBox" margin="true" stylename="card table-box" height="300px">
+                            <table id="basicTable" metaClass="helium_User" height="100%" width="100%">
+                                <columns>
+                                    <column id="username"/>
+                                    <column id="name"/>
+                                    <column id="active"/>
+                                </columns>
+                            </table>
+                        </vbox>
+                        <vbox id="tokenListBox" margin="true" stylename="card tokenlist-box" height="300px">
+                            <!--                         todo rp tagPicker   -->
+                            <!--  <tokenList id="basicTokenList" width="100%" height="100%">
+                                  <lookup/>
+                              </tokenList>-->
+                        </vbox>
+                        <vbox spacing="true" stylename="radiobutton-checkbox-box">
+                            <vbox id="radioButtonGroupBox" stylename="card" height="144px">
+                                <radioButtonGroup id="basicRadioButtonGroup" align="MIDDLE_CENTER"/>
+                            </vbox>
+                            <vbox id="checkBoxGroupBox" stylename="card" height="144px">
+                                <checkBoxGroup id="basicCheckBoxGroup" align="MIDDLE_CENTER"/>
+                            </vbox>
+                        </vbox>
+                    </cssLayout>
+                </scrollBox>
+            </tab>
+            <tab id="allComponentsBox" caption="msg://allComponentsBox.caption" spacing="true" margin="true"
+                 expand="scrollBox">
+                <scrollBox id="scrollBox" spacing="true" width="100%">
+                    <groupBox caption="Accordion" spacing="true" collapsable="true" collapsed="false">
+                        <accordion id="accordion"
+                                   height="500px">
+                            <tab id="tabAccordion11"
+                                 caption="Tab 1"
+                                 expand="spacerAccordion1"
+                                 icon="icons/upload.png"
+                                 margin="true"
+                                 spacing="true">
+                                <label value="Label 1"/>
+                                <textField inputPrompt="TextField 1"/>
+                                <button caption="Button 1"/>
+                                <label id="spacerAccordion1"/>
+                            </tab>
+                            <tab id="tabAccordion12"
+                                 caption="Tab 2"
+                                 expand="spacerAccordion2"
+                                 icon="icons/upload.png"
+                                 margin="true"
+                                 spacing="true">
+                                <label value="Label 2"/>
+                                <textField inputPrompt="TextField 2"/>
+                                <button caption="Button 2"/>
+                                <label id="spacerAccordion2"/>
+                            </tab>
+                            <tab id="tabAccordion2" caption="Tab 2"/>
+                            <tab id="tabAccordion3" caption="Tab 3"/>
+                            <tab id="tabAccordion4" caption="Tab 4" enable="false"/>
+                        </accordion>
+                        <hbox margin="true" stylename="card" width="100%" spacing="true">
+                            <accordion height="400px" width="100%" stylename="large">
+                                <tab id="tabAccordion111"
+                                     caption="Tab 1"/>
+                                <tab id="tabAccordion112"
+                                     caption="Tab 2"/>
+                                <tab id="tabAccordion113"
+                                     caption="Tab 3"/>
+                            </accordion>
+                            <accordion height="400px" width="100%" stylename="medium">
+                                <tab id="tabAccordion121"
+                                     caption="Tab 1"/>
+                                <tab id="tabAccordion122"
+                                     caption="Tab 2"/>
+                                <tab id="tabAccordion123"
+                                     caption="Tab 3"/>
+                            </accordion>
+                            <accordion height="400px" width="100%" stylename="small">
+                                <tab id="tabAccordion131"
+                                     caption="Tab 1"/>
+                                <tab id="tabAccordion132"
+                                     caption="Tab 2"/>
+                                <tab id="tabAccordion133"
+                                     caption="Tab 3"/>
+                            </accordion>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="Button" collapsable="true" spacing="true" collapsed="true">
+                        <hbox spacing="true">
+                            <button caption="LARGE" stylename="large"/>
+                            <button caption="Medium" stylename="medium"/>
+                            <button caption="small" stylename="small"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="Default" icon="APPLE"/>
+                            <button caption="Button" icon="APPLE"/>
+                            <button caption="Disabled" enable="false" icon="APPLE"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="Default" icon="APPLE" width="150px"/>
+                            <button caption="Button" icon="APPLE" width="150px"/>
+                            <button caption="Disabled" enable="false" icon="APPLE" width="150px"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="Primary" icon="APPLE" stylename="primary" width="150px"/>
+                            <button caption="Button" icon="APPLE" stylename="primary" width="150px"/>
+                            <button caption="Disabled" enable="false" icon="APPLE" stylename="primary" width="150px"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="Friendly" icon="APPLE" stylename="friendly" width="150px"/>
+                            <button caption="Button" icon="APPLE" stylename="friendly" width="150px"/>
+                            <button caption="Disabled" enable="false" icon="APPLE" stylename="friendly" width="150px"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="Danger" icon="APPLE" stylename="danger" width="150px"/>
+                            <button caption="Button" icon="APPLE" stylename="danger" width="150px"/>
+                            <button caption="Disabled" enable="false" icon="APPLE" stylename="danger" width="150px"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="Secondary" icon="APPLE" stylename="secondary" width="150px"/>
+                            <button caption="Button" icon="APPLE" stylename="secondary" width="150px"/>
+                            <button caption="Disabled" enable="false" icon="APPLE" stylename="secondary" width="150px"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <linkButton caption="Link Button" icon="APPLE" width="150px"/>
+                            <linkButton caption="Link Button" icon="APPLE" width="150px"/>
+                            <linkButton caption="Disabled" enable="false" icon="APPLE" width="150px"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="borderless"
+                                    stylename="borderless"/>
+                            <button caption="disabled"
+                                    enable="false"
+                                    stylename="borderless"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="borderless-colored"
+                                    stylename="borderless-colored"/>
+                            <button caption="disabled"
+                                    enable="false"
+                                    stylename="borderless-colored"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button caption="quiet"
+                                    stylename="quiet"/>
+                            <button caption="disabled"
+                                    enable="false"
+                                    stylename="quiet"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <button icon="APPLE"/>
+                            <button icon="app/images/new-window.png"/>
+                            <button icon="app/images/new-window.png" stylename="icon-only"/>
+                            <button icon="app/images/new-window.png" stylename="quiet icon-only"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <popupButton id="popupButton1"
+                                         caption="PopupButton">
+                                <actions>
+                                    <action id="popupAction1" caption="Save as DOC"/>
+                                    <action id="popupAction2" caption="Save as PDF"/>
+                                </actions>
+                            </popupButton>
+                            <popupButton caption="Primary"
+                                         stylename="primary">
+                                <actions>
+                                    <action id="popupAction1" caption="Save as DOC"/>
+                                    <action id="popupAction2" caption="Save as PDF"/>
+                                </actions>
+                            </popupButton>
+                            <popupButton caption="Friendly"
+                                         stylename="friendly">
+                                <actions>
+                                    <action id="popupAction1" caption="Save as DOC"/>
+                                    <action id="popupAction2" caption="Save as PDF"/>
+                                </actions>
+                            </popupButton>
+                            <popupButton caption="Danger"
+                                         stylename="danger">
+                                <actions>
+                                    <action id="popupAction1" caption="Save as DOC"/>
+                                    <action id="popupAction2" caption="Save as PDF"/>
+                                </actions>
+                            </popupButton>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="Calendar" spacing="true" collapsable="true" collapsed="true">
+                        <tabSheet width="100%" height="800px">
+                            <tab id="monthTab" caption="Month Calendar" margin="true,false,false,false">
+                                <calendar id="monthCalendar"
+                                          navigationButtonsVisible="true"
+                                          endDate="2020-03-31"
+                                          height="100%"
+                                          startDate="2020-03-01"
+                                          width="100%"/>
+                            </tab>
+                            <tab id="weekTab" caption="Week Calendar" margin="true,false,false,false">
+                                <calendar id="weekCalendar" navigationButtonsVisible="true"
+                                          endDate="2020-03-28"
+                                          height="100%"
+                                          startDate="2020-03-22"
+                                          width="100%"/>
+                            </tab>
+                            <tab id="dayTab" caption="Day Calendar" margin="true,false,false,false">
+                                <calendar id="dayCalendar"
+                                          endDate="2020-03-25"
+                                          height="100%"
+                                          startDate="2020-03-25"
+                                          width="100%"/>
+                            </tab>
+                        </tabSheet>
+                    </groupBox>
+
+                    <groupBox caption="CapsLockIndicator" spacing="true" collapsable="true" collapsed="true">
+                        <hbox spacing="true">
+                            <groupBox caption="Simple CapsLockIndicator">
+                                <capsLockIndicator id="capsLock1"
+                                                   align="MIDDLE_CENTER" stylename="large"/>
+                                <passwordField capsLockIndicator="capsLock1"
+                                               align="MIDDLE_CENTER"/>
+                            </groupBox>
+                            <groupBox caption="CapsLockIndicator with OFF message">
+                                <capsLockIndicator id="capsLock2"
+                                                   align="MIDDLE_CENTER"
+                                                   capsLockOffMessage="Caps Lock is off"/>
+                                <passwordField capsLockIndicator="capsLock2"
+                                               align="MIDDLE_CENTER"/>
+                            </groupBox>
+                            <groupBox caption="CapsLockIndicator without messages"
+                                      orientation="horizontal"
+                                      spacing="true">
+                                <passwordField capsLockIndicator="capsLock3"/>
+                                <capsLockIndicator id="capsLock3"
+                                                   capsLockOnMessage=""/>
+                            </groupBox>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="CheckBox" spacing="true" collapsable="true" collapsed="true">
+                        <hbox spacing="true">
+                            <checkBox caption="normal"/>
+                            <checkBox caption="LARGE" stylename="large"/>
+                            <checkBox caption="Medium" stylename="medium"/>
+                            <checkBox caption="small" stylename="small"/>
+                        </hbox>
+                        <checkBox caption="CheckBox"/>
+                        <checkBox caption="CheckBox"/>
+                        <checkBox caption="CheckBox"/>
+                        <checkBox id="checkBoxRO1" caption="CheckBox (Read-only)" editable="false"/>
+                        <checkBox id="checkBoxRO2" caption="CheckBox (Read-only)" editable="false"/>
+                        <checkBox id="checkBoxD1" caption="CheckBox (Disabled)" enable="false"/>
+                        <checkBox id="checkBoxD2" caption="CheckBox (Disabled)" enable="false"/>
+                        <hbox id="checkBoxGroupSampleBox" margin="true" stylename="card">
+                            <checkBoxGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                           align="MIDDLE_CENTER" stylename="large"/>
+                            <checkBoxGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                           align="MIDDLE_CENTER" stylename="medium"/>
+                            <checkBoxGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                           align="MIDDLE_CENTER" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="ColorPicker" spacing="true" collapsable="true" collapsed="true">
+                        <colorPicker/>
+                        <colorPicker caption="Read-only" editable="false"/>
+                        <colorPicker caption="Disabled" enable="false"/>
+                        <colorPicker caption="Required" required="true"/>
+                        <colorPicker caption="Required" required="true" defaultCaptionEnabled="true"/>
+                        <colorPicker defaultCaptionEnabled="true"/>
+                        <colorPicker caption="With Tabs"
+                                     hsvVisible="true"
+                                     historyVisible="true"
+                                     swatchesVisible="true"/>
+                        <hbox spacing="true">
+                            <colorPicker caption="LARGE" stylename="large"/>
+                            <colorPicker caption="Medium" stylename="medium"/>
+                            <colorPicker caption="small" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="ComboBox" spacing="true" collapsable="true" collapsed="true">
+                        <comboBox caption="ComboBox" inputPrompt="Placeholder"
+                                  optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <comboBox id="comboBoxRO" caption="Read-only" editable="false"
+                                  optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <comboBox id="comboBoxD" caption="Disabled" enable="false"
+                                  optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <comboBox caption="Text Input - Disabled"
+                                  optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                  textInputAllowed="false"/>
+                        <comboBox caption="Required" optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                  required="true"/>
+                        <comboBox caption="Required and Text Input - Disabled"
+                                  optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                  textInputAllowed="false"
+                                  required="true"/>
+                        <hbox spacing="true">
+                            <comboBox caption="LARGE"
+                                      inputPrompt="Placeholder" stylename="large"
+                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                            <comboBox caption="Medium"
+                                      inputPrompt="Placeholder" stylename="medium"
+                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                            <comboBox caption="small"
+                                      inputPrompt="Placeholder" stylename="small"
+                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="EntityPicker" spacing="true" collapsable="true" collapsed="true">
+                        <entityPicker id="entityPicker" caption="EntityPicker" metaClass="helium_User"/>
+                        <entityPicker id="entityPickerRO" caption="Read-only" editable="false" metaClass="helium_User"/>
+                        <entityPicker id="entityPickerD" caption="Disabled" enable="false" metaClass="helium_User"/>
+                        <entityPicker id="entityPickerR" caption="Required" required="true" metaClass="helium_User"/>
+
+                        <hbox spacing="true">
+                            <entityPicker id="entityPickerLarge" metaClass="helium_User" caption="LARGE"
+                                          stylename="large"/>
+                            <entityPicker id="entityPickerMedium" metaClass="helium_User" caption="Medium"
+                                          stylename="medium"/>
+                            <entityPicker id="entityPickerSmall" metaClass="helium_User" caption="small"
+                                          stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="EntityComboBox" spacing="true" collapsable="true" collapsed="true">
+                        <entityComboBox id="entityComboBox" caption="EntityComboBox" metaClass="helium_User">
+                            <actions>
+                                <action id="lookup" type="entity_lookup"/>
+                                <action id="clear" type="entity_clear"/>
+                            </actions>
+                        </entityComboBox>
+                        <entityComboBox id="entityComboBoxRO" caption="Read-only" editable="false"
+                                        metaClass="helium_User">
+                            <actions>
+                                <action id="lookup" type="entity_lookup"/>
+                                <action id="clear" type="entity_clear"/>
+                            </actions>
+                        </entityComboBox>
+                        <entityComboBox id="entityComboBoxD" caption="Disabled" enable="false"
+                                        metaClass="helium_User">
+                            <actions>
+                                <action id="lookup" type="entity_lookup"/>
+                                <action id="clear" type="entity_clear"/>
+                            </actions>
+                        </entityComboBox>
+                        <entityComboBox id="entityComboBoxR" caption="Required" required="true"
+                                        metaClass="helium_User">
+                            <actions>
+                                <action id="lookup" type="entity_lookup"/>
+                                <action id="clear" type="entity_clear"/>
+                            </actions>
+                        </entityComboBox>
+
+                        <hbox spacing="true">
+                            <entityComboBox id="entityComboBoxLarge" metaClass="helium_User" caption="LARGE"
+                                            stylename="large">
+                                <actions>
+                                    <action id="lookup" type="entity_lookup"/>
+                                    <action id="clear" type="entity_clear"/>
+                                </actions>
+                            </entityComboBox>
+
+                            <entityComboBox id="entityComboBoxMedium" metaClass="helium_User" caption="Medium"
+                                            stylename="medium">
+                                <actions>
+                                    <action id="lookup" type="entity_lookup"/>
+                                    <action id="clear" type="entity_clear"/>
+                                </actions>
+                            </entityComboBox>
+
+                            <entityComboBox id="entityComboBoxSmall" metaClass="helium_User" caption="small"
+                                            stylename="small">
+                                <actions>
+                                    <action id="lookup" type="entity_lookup"/>
+                                    <action id="clear" type="entity_clear"/>
+                                </actions>
+                            </entityComboBox>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="CurrencyField" spacing="true" collapsable="true" collapsed="true">
+                        <currencyField caption="CurrencyField" icon="APPLE" currency="$"/>
+                        <currencyField caption="CurrencyField" icon="APPLE" currency="$" currencyLabelPosition="LEFT"/>
+                        <currencyField caption="Read-only" editable="false" currency="$"/>
+                        <currencyField caption="Disabled" enable="false" currency="$"/>
+                        <currencyField caption="Required" required="true" currency="$"
+                                       requiredMessage="Required"
+                                       description="Description"/>
+                        <hbox spacing="true">
+                            <currencyField caption="LARGE" stylename="large" currency="$"/>
+                            <currencyField caption="Medium" stylename="medium" currency="$"/>
+                            <currencyField caption="small" stylename="small" currency="$"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="DateField" spacing="true" collapsable="true" collapsed="true">
+                        <dateField id="dateField" caption="DateField"/>
+                        <dateField caption="Read-only" editable="false"/>
+                        <dateField caption="Disabled" enable="false"/>
+                        <dateField caption="Required" required="true"/>
+
+                        <hbox spacing="true">
+                            <dateField resolution="YEAR" caption="YEAR"/>
+                            <dateField resolution="MONTH" caption="MONTH"/>
+                            <dateField resolution="DAY" caption="DAY"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <dateField resolution="HOUR" caption="HOUR"/>
+                            <dateField resolution="MIN" caption="MIN"/>
+                            <dateField resolution="SEC" caption="SEC"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <dateField caption="LARGE" stylename="large"/>
+                            <dateField caption="Medium" stylename="medium"/>
+                            <dateField caption="small" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="TimeField" spacing="true" collapsable="true" collapsed="true">
+                        <timeField caption="TimeField"/>
+                        <timeField caption="Read-only" editable="false"/>
+                        <timeField caption="Disabled" enable="false"/>
+                        <timeField caption="Required" required="true"/>
+
+                        <hbox spacing="true">
+                            <timeField resolution="HOUR" caption="HOUR"/>
+                            <timeField resolution="MIN" caption="MIN"/>
+                            <timeField resolution="SEC" caption="SEC"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <timeField caption="LARGE" stylename="large"/>
+                            <timeField caption="Medium" stylename="medium"/>
+                            <timeField caption="small" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="DatePicker" spacing="true" collapsable="true" collapsed="true">
+                        <datePicker caption="DatePicker"/>
+                        <datePicker caption="Read-only" editable="false"/>
+                        <datePicker caption="Disabled" enable="false"/>
+
+                        <hbox spacing="true">
+                            <datePicker resolution="YEAR" caption="YEAR"/>
+                            <datePicker resolution="MONTH" caption="MONTH"/>
+                            <datePicker resolution="DAY" caption="DAY"/>
+                        </hbox>
+                        <hbox spacing="true">
+                            <datePicker caption="LARGE" stylename="large"/>
+                            <datePicker caption="Medium" stylename="medium"/>
+                            <datePicker caption="small" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="DataGrid" spacing="true" collapsable="true" collapsed="true">
+                        <dataGrid id="dataGridSample" metaClass="helium_User" width="100%" height="600px"
+                                  selectionMode="MULTI"
+                                  editorEnabled="true" editorBuffered="true"
+                                  aggregatable="true" aggregationPosition="BOTTOM">
+                            <actions>
+                                <action id="create" type="create"/> <!--todo rp disable-->
+                                <action id="edit" type="edit"/> <!--todo rp disable-->
+                                <action id="remove" type="remove"/> <!--todo rp disable-->
+                                <action id="greeting" caption="Greeting"/>
+                            </actions>
+                            <columns>
+                                <column property="name">
+                                    <aggregation type="COUNT"/>
+                                </column>
+                                <column property="username">
+                                    <aggregation type="COUNT"/>
+                                </column>
+<!--                                <column property="group"/>--> <!--todo rp group-->
+                                <column property="active"/>
+                            </columns>
+
+                            <buttonsPanel>
+                                <button id="showDetailsBtn" caption="Show Details"/>
+                                <button id="closeDetailsBtn" caption="Close Details"/>
+                            </buttonsPanel>
+                        </dataGrid>
+                    </groupBox>
+
+                    <groupBox caption="Dialogs" collapsable="true" spacing="true" collapsed="true"
+                              orientation="horizontal"
+                              expand="spacerD">
+                        <button id="showMessageDialogBtn" caption="Show Message Dialog"/>
+                        <button id="showOptionDialogBtn" caption="Show Option Dialog"/>
+                        <button id="showInputDialogBtn" caption="Show Input Dialog"/>
+                        <label id="spacerD"/>
+                    </groupBox>
+
+                    <groupBox caption="Form" spacing="true" collapsable="true" collapsed="true">
+                        <form childrenCaptionWidth="300px" childrenCaptionAlignment="RIGHT">
+                            <textField caption="TextField"/>
+                            <checkBox caption="CheckBox"/>
+                        </form>
+                        <form captionPosition="TOP">
+                            <textField caption="TextField"/>
+                            <checkBox caption="CheckBox"/>
+                        </form>
+                    </groupBox>
+
+                    <groupBox caption="Label" spacing="true" collapsable="true" collapsed="true"
+                              orientation="horizontal">
+                        <hbox spacing="true">
+                            <groupBox caption="Font variants"
+                                      spacing="true">
+                                <label stylename="light"
+                                       value="light"/>
+                                <label stylename="bold"
+                                       value="bold"/>
+                                <label stylename="colored"
+                                       value="colored"/>
+                            </groupBox>
+                            <groupBox caption="Headers"
+                                      spacing="true">
+                                <label stylename="h1"
+                                       value="h1"/>
+                                <label stylename="h2"
+                                       value="h2"/>
+                                <label stylename="h3"
+                                       value="h3"/>
+                                <label stylename="h4"
+                                       value="h4"/>
+                            </groupBox>
+                            <groupBox caption="Other"
+                                      spacing="true">
+                                <label stylename="success"
+                                       value="success"
+                                       width="200px"/>
+                                <label stylename="failure"
+                                       value="failure"
+                                       width="200px"/>
+                                <label stylename="no-margin"
+                                       value="no-margin"/>
+
+                                <label value="Spinner:"/>
+                                <label stylename="spinner"/>
+                            </groupBox>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="Link" spacing="true" collapsable="true" collapsed="true">
+                        <link caption="Link"
+                              target="_blank"
+                              url="https://www.cuba-platform.com/"/>
+                        <link caption="Link"
+                              icon="icons/chain.png"
+                              target="_blank"
+                              url="https://www.cuba-platform.com/"/>
+                        <link icon="icons/chain.png"
+                              target="_blank"
+                              url="https://www.cuba-platform.com/"/>
+                        <link caption="Disabled"
+                              icon="icons/chain.png"
+                              target="_blank"
+                              url="https://www.cuba-platform.com/"
+                              enable="false"/>
+                        <hbox>
+                            <link caption="LARGE"
+                                  icon="icons/chain.png"
+                                  target="_blank"
+                                  url="https://www.cuba-platform.com/"
+                                  stylename="large"/>
+                            <link caption="Medium"
+                                  icon="icons/chain.png"
+                                  target="_blank"
+                                  url="https://www.cuba-platform.com/"
+                                  stylename="medium"/>
+                            <link caption="small"
+                                  icon="icons/chain.png"
+                                  target="_blank"
+                                  url="https://www.cuba-platform.com/"
+                                  stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="Notifications" collapsable="true" spacing="true" collapsed="true"
+                              orientation="horizontal"
+                              expand="spacerN">
+                        <button id="showTrayBtn" caption="Tray"/>
+                        <button id="showHumanizedBtn" caption="Humanized"/>
+                        <button id="showWarningBtn" caption="Warning"/>
+                        <button id="showErrorBtn" caption="Error"/>
+                        <button id="showSystemBtn" caption="System"/>
+                        <label id="spacerN"/>
+                    </groupBox>
+                    <!--todo rp-->
+                    <!--<groupBox caption="OptionsGroup" spacing="true" collapsable="true" collapsed="true">
+                        <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <optionsGroup id="optionsGroupRO" caption="Read-only" editable="false"
+                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <optionsGroup id="optionsGroupD" caption="Disabled" enable="false"
+                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+
+                        <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                      orientation="horizontal"/>
+
+                        <hbox stylename="card" spacing="true">
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                          align="MIDDLE_CENTER" stylename="large"/>
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                          align="MIDDLE_CENTER" stylename="medium"/>
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                          align="MIDDLE_CENTER" stylename="small"/>
+                        </hbox>
+
+                        <hbox margin="true" stylename="card">
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
+                                          align="MIDDLE_CENTER"/>
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
+                                          align="MIDDLE_CENTER" stylename="large"/>
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
+                                          align="MIDDLE_CENTER" stylename="medium"/>
+                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
+                                          align="MIDDLE_CENTER" stylename="small"/>
+                        </hbox>
+                        <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" orientation="horizontal"
+                                      multiselect="true"/>
+                    </groupBox>
+
+                    <groupBox caption="OptionsList" spacing="true" collapsable="true" collapsed="true">
+                        <optionsList optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                     height="180px"
+                                     width="160px"/>
+                        <optionsList id="optionsListRO" caption="Read-only" editable="false"
+                                     optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                     height="180px"
+                                     width="160px"/>
+                        <optionsList id="optionsListD" caption="Disabled" enable="false"
+                                     optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                     height="180px"
+                                     width="160px"/>
+                        <optionsList caption="Required" required="true"
+                                     optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                     height="180px"
+                                     width="160px"/>
+                        <hbox stylename="card" spacing="true" margin="true">
+                            <optionsList caption="LARGE"
+                                         optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                         stylename="large"/>
+                            <optionsList caption="Medium"
+                                         optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                         stylename="medium"/>
+                            <optionsList caption="small"
+                                         optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                         stylename="small"/>
+                        </hbox>
+                    </groupBox>-->
+
+                    <groupBox caption="PopupView" spacing="true" collapsable="true" collapsed="true">
+                        <popupView caption="Hide by clicking on outside area" minimizedValue="Click me!"
+                                   hideOnMouseOut="false">
+                            <vbox spacing="true">
+                                <textField caption="Text Field"/>
+                                <button caption="Button" align="MIDDLE_RIGHT"/>
+                            </vbox>
+                        </popupView>
+
+                        <popupView caption="Hide by clicking on outside area" icon="APPLE"
+                                   align="BOTTOM_RIGHT"
+                                   minimizedValue="Click me!" hideOnMouseOut="false">
+                            <vbox spacing="true">
+                                <table id="tablePopupView" width="400px" height="300px" multiselect="true"
+                                       aggregatable="true" editable="true" aggregationStyle="TOP"
+                                       metaClass="helium_User">
+                                    <actions>
+                                        <action id="bulkEdit" type="bulkEdit"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="username">
+                                            <aggregation type="COUNT"/>
+                                        </column>
+                                        <column id="name">
+                                            <aggregation type="COUNT"/>
+                                        </column>
+<!--                                        <column id="group"/>--> <!--todo rp group-->
+                                        <column id="active">
+                                            <aggregation type="COUNT"/>
+                                        </column>
+                                    </columns>
+                                    <buttonsPanel>
+                                        <relatedEntities for="tablePopupView">
+<!--                                          todo rp related property  -->
+                                        </relatedEntities>
+                                    </buttonsPanel>
+                                </table>
+                            </vbox>
+                        </popupView>
+                    </groupBox>
+
+                    <groupBox caption="ProgressBar" spacing="true" collapsable="true" collapsed="true">
+                        <progressBar id="progressBar" caption="ProgressBar" width="100%"/>
+                        <progressBar id="progressBarP" caption="Point" width="100%" stylename="point"/>
+                        <progressBar indeterminate="true" width="500px"/>
+                        <progressBar indeterminate="true" stylename="indeterminate-circle"/>
+                    </groupBox>
+
+                    <groupBox caption="RadioButtonGroup" spacing="true" collapsable="true" collapsed="true">
+                        <radioButtonGroup optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <radioButtonGroup id="radioButtonGroupRO" caption="Read-only" editable="false"
+                                          optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <radioButtonGroup id="radioButtonGroupD" caption="Disabled" enable="false"
+                                          optionsEnum="io.jmix.editor.helium.entity.Grade"/>
+                        <hbox stylename="card" spacing="true">
+                            <radioButtonGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                              align="MIDDLE_CENTER" stylename="large"/>
+                            <radioButtonGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                              align="MIDDLE_CENTER" stylename="medium"/>
+                            <radioButtonGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
+                                              align="MIDDLE_CENTER" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="RichTextArea" spacing="true" collapsable="true" collapsed="true">
+                        <richTextArea caption="RichTextArea"/>
+                        <richTextArea caption="Read-only" editable="false"/>
+                        <richTextArea caption="Disabled" enable="false"/>
+                        <richTextArea caption="Required" required="true" requiredMessage="Required"/>
+
+                        <vbox spacing="true">
+                            <richTextArea caption="LARGE" stylename="large"/>
+                            <richTextArea caption="Medium" stylename="medium"/>
+                            <richTextArea caption="small" stylename="small"/>
+                        </vbox>
+                    </groupBox>
+
+                    <groupBox caption="Slider" spacing="true" collapsable="true" collapsed="true">
+                        <hbox spacing="true">
+                            <vbox spacing="true">
+                                <slider caption="Slider" width="500px"/>
+                                <slider caption="Read-only" editable="false" width="500px"/>
+                                <slider caption="Disabled" enable="false" width="500px"/>
+                                <slider caption="Required" required="true" width="500px"/>
+                            </vbox>
+
+                            <slider caption="Vertical" height="300px" orientation="vertical"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="SourceCodeEditor" spacing="true" collapsable="true" collapsed="true">
+                        <hbox spacing="true">
+                            <checkBox id="highlightActiveLineCheck"
+                                      align="BOTTOM_LEFT"
+                                      caption="Highlight Active Line"/>
+                            <checkBox id="printMarginCheck"
+                                      align="BOTTOM_LEFT"
+                                      caption="Print Margin"/>
+                            <checkBox id="showGutterCheck"
+                                      align="BOTTOM_LEFT"
+                                      caption="Show Gutter"/>
+                        </hbox>
+                        <sourceCodeEditor id="codeEditor"
+                                          width="100%"/>
+                        <sourceCodeEditor id="codeEditorRO"
+                                          caption="Read-only"
+                                          editable="false"
+                                          width="100%"/>
+                        <sourceCodeEditor id="codeEditorD"
+                                          caption="Disabled"
+                                          enable="false"
+                                          width="100%"/>
+                        <sourceCodeEditor caption="Required"
+                                          required="true"
+                                          width="100%"/>
+
+                        <hbox spacing="true">
+                            <sourceCodeEditor caption="LARGE" stylename="large"/>
+                            <sourceCodeEditor caption="Medium" stylename="medium"/>
+                            <sourceCodeEditor caption="small" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="SplitPanel" spacing="true" collapsable="true" collapsed="true">
+                        <split orientation="horizontal" width="100%" height="200px" dockable="true" dockMode="LEFT">
+                            <label value="Left" align="MIDDLE_CENTER"/>
+                            <label value="Right" align="MIDDLE_CENTER"/>
+                        </split>
+                        <split orientation="horizontal" width="100%" height="200px" dockable="true" dockMode="RIGHT">
+                            <label value="Left" align="MIDDLE_CENTER"/>
+                            <label value="Right" align="MIDDLE_CENTER"/>
+                        </split>
+                    </groupBox>
+
+                    <groupBox caption="SuggestionField" spacing="true" collapsable="true" collapsed="true">
+                        <suggestionField id="suggestionFieldSample"
+                                         caption="SuggestionField"
+                                         inputPrompt="Start typing"/>
+                        <suggestionField id="suggestionFieldReadOnly"
+                                         caption="Read-only"
+                                         editable="false"
+                                         inputPrompt="Start typing"/>
+                        <suggestionField id="suggestionFieldDisabled"
+                                         caption="Disabled"
+                                         enable="false"
+                                         inputPrompt="Start typing"/>
+                        <suggestionField id="suggestionFieldRequired"
+                                         caption="Required"
+                                         required="true"
+                                         inputPrompt="Start typing"/>
+                        <hbox spacing="true">
+                            <suggestionField id="suggestionFieldLarge"
+                                             caption="LARGE"
+                                             inputPrompt="Start typing"
+                                             stylename="large"/>
+                            <suggestionField id="suggestionFieldMedium"
+                                             caption="Medium"
+                                             inputPrompt="Start typing"
+                                             stylename="medium"/>
+                            <suggestionField id="suggestionFieldSmall"
+                                             caption="small"
+                                             inputPrompt="Start typing"
+                                             stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="EntitySuggestionField" spacing="true" collapsable="true" collapsed="true">
+                        <entitySuggestionField id="entitySuggestionFieldSample"
+                                               metaClass="helium_User"
+                                               caption="EntitySuggestionField"
+                                               inputPrompt="Start typing">
+                            <actions>
+                                <action id="open" type="entity_open"/> <!--todo rp open>-->
+                            </actions>
+                        </entitySuggestionField>
+
+                        <entitySuggestionField id="entitySuggestionFieldReadonly"
+                                               editable="false"
+                                               metaClass="helium_User"
+                                               caption="Read-only"
+                                               inputPrompt="Start typing">
+                            <actions>
+                                <action id="open" type="entity_open"/> <!--todo rp open>-->
+                            </actions>
+                        </entitySuggestionField>
+
+                        <entitySuggestionField id="entitySuggestionFieldDisabled"
+                                               enable="false"
+                                               metaClass="helium_User"
+                                               caption="Disabled"
+                                               inputPrompt="Start typing">
+                            <actions>
+                                <action id="open" type="entity_open"/> <!--todo rp open?-->
+                            </actions>
+                        </entitySuggestionField>
+
+                        <hbox spacing="true">
+                            <entitySuggestionField id="entitySuggestionFieldLarge"
+                                                   metaClass="helium_User"
+                                                   caption="LARGE"
+                                                   inputPrompt="Start typing"
+                                                   stylename="large">
+                                <actions>
+                                    <action id="open" type="entity_open"/> <!--todo rp open?-->
+                                </actions>
+                            </entitySuggestionField>
+                            <entitySuggestionField id="entitySuggestionFieldMedium"
+                                                   metaClass="helium_User"
+                                                   caption="Medium"
+                                                   inputPrompt="Start typing"
+                                                   stylename="medium">
+                                <actions>
+                                    <action id="open" type="entity_open"/> <!--todo rp open?-->
+                                </actions>
+                            </entitySuggestionField>
+                            <entitySuggestionField id="entitySuggestionFieldSmall"
+                                                   metaClass="helium_User"
+                                                   caption="small"
+                                                   inputPrompt="Start typing"
+                                                   stylename="small">
+                                <actions>
+                                    <action id="open" type="entity_open"/> <!--todo rp open?-->
+                                </actions>
+                            </entitySuggestionField>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="Table" spacing="true" collapsable="true" collapsed="true">
+                        <table id="tableSample" metaClass="helium_User" width="100%" height="300px" multiselect="true"
+                               aggregatable="true" aggregationStyle="TOP">
+                            <columns>
+                                <column id="username">
+                                    <aggregation type="COUNT"/>
+                                </column>
+                                <column id="name">
+                                    <aggregation type="COUNT"/>
+                                </column>
+<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <column id="active">
+                                    <aggregation type="COUNT"/>
+                                </column>
+                            </columns>
+                        </table>
+
+                        <groupTable id="groupTableSample"
+                                    metaClass="helium_User"
+                                    width="100%"
+                                    height="300px"
+                                    multiselect="true"
+                                    aggregatable="true"
+                                    aggregationStyle="BOTTOM">
+                            <columns>
+                                <column id="username">
+                                    <aggregation type="COUNT"/>
+                                </column>
+                                <column id="name">
+                                    <aggregation type="COUNT"/>
+                                </column>
+<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <column id="active">
+                                    <aggregation type="COUNT"/>
+                                </column>
+                            </columns>
+                        </groupTable>
+
+                        <treeTable id="treeTableSample"
+                                   metaClass="helium_Directory"
+                                   hierarchyProperty="parent"
+                                   width="100%"
+                                   height="200px">
+                            <columns>
+                                <column id="name"/>
+                                <column id="parent"/>
+                            </columns>
+                        </treeTable>
+
+                        <table id="largeTableSample" metaClass="helium_User" width="100%" height="300px"
+                               multiselect="true"
+                               caption="LARGE" stylename="large">
+                            <columns>
+                                <column id="username"/>
+                                <column id="name"/>
+<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <column id="active"/>
+                            </columns>
+                        </table>
+
+                        <table id="smallTableSample" metaClass="helium_User" width="100%" height="300px"
+                               multiselect="true"
+                               caption="small" stylename="small">
+                            <columns>
+                                <column id="username"/>
+                                <column id="name"/>
+<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <column id="active"/>
+                            </columns>
+                        </table>
+
+                        <table id="mediumTableSample" metaClass="helium_User" width="100%" height="300px"
+                               multiselect="true"
+                               caption="Medium" stylename="medium">
+                            <columns>
+                                <column id="username"/>
+                                <column id="name"/>
+<!--                                <column id="group"/>--> <!--todo rp open-->
+                                <column id="active"/>
+                            </columns>
+                        </table>
+                    </groupBox>
+
+                    <groupBox caption="TabSheet" spacing="true" collapsable="true" collapsed="true">
+                        <groupBox caption="Styles"
+                                  spacing="true">
+                            <flowBox id="tabSheetStylesBox" spacing="true">
+                                <checkBox id="centeredTabs"
+                                          caption="centered-tabs"/>
+                                <checkBox id="compactTabbar"
+                                          caption="compact-tabbar"/>
+                                <checkBox id="equalWidthTabs"
+                                          caption="equal-width-tabs"/>
+                                <checkBox id="framed"
+                                          caption="framed"/>
+                                <checkBox id="iconsOnTop"
+                                          caption="icons-on-top"/>
+                                <checkBox id="onlySelectedClosable"
+                                          caption="only-selected-closable"/>
+                                <checkBox id="paddedTabbar"
+                                          caption="padded-tabbar"/>
+                            </flowBox>
+                        </groupBox>
+                        <tabSheet id="tabSheet"
+                                  height="150px">
+                            <tab id="tab1"
+                                 caption="Tab 1"
+                                 expand="spacer1"
+                                 icon="icons/upload.png"
+                                 margin="true"
+                                 spacing="true">
+                                <label value="Label 1"/>
+                                <textField inputPrompt="TextField 1"/>
+                                <button caption="Button 1"/>
+                                <label id="spacer1"/>
+                            </tab>
+                            <tab id="tab2"
+                                 caption="Tab 2"
+                                 expand="spacer2"
+                                 icon="icons/upload.png"
+                                 margin="true"
+                                 spacing="true">
+                                <label value="Label 2"/>
+                                <textField inputPrompt="TextField 2"/>
+                                <button caption="Button 2"/>
+                                <label id="spacer2"/>
+                            </tab>
+                            <tab id="tab32" caption="Tab 2" closable="true"/>
+                            <tab id="tab33" caption="Tab 3" closable="true"/>
+                            <tab id="tab34" caption="Tab 4" enable="false"/>
+                        </tabSheet>
+
+                        <vbox id="tabSheetsSampleBox" margin="true" stylename="card" width="300px" height="300px">
+                            <vbox spacing="true" align="MIDDLE_CENTER">
+                                <tabSheet height="100px" width="100%" stylename="framed large">
+                                    <tab id="tab111"
+                                         caption="Tab 1"/>
+                                    <tab id="tab112"
+                                         caption="Tab 2"/>
+                                    <tab id="tab113"
+                                         caption="Tab 3"/>
+                                </tabSheet>
+                                <tabSheet height="100px" width="100%" stylename="framed medium">
+                                    <tab id="tab121"
+                                         caption="Tab 1"/>
+                                    <tab id="tab122"
+                                         caption="Tab 2"/>
+                                    <tab id="tab123"
+                                         caption="Tab 3"/>
+                                </tabSheet>
+                                <tabSheet height="100px" width="100%" stylename="framed small">
+                                    <tab id="tab131"
+                                         caption="Tab 1"/>
+                                    <tab id="tab132"
+                                         caption="Tab 2"/>
+                                    <tab id="tab133"
+                                         caption="Tab 3"/>
+                                </tabSheet>
+                            </vbox>
+                        </vbox>
+                    </groupBox>
+
+                    <groupBox caption="TextField" spacing="true" collapsable="true" collapsed="true">
+                        <textField id="textField" caption="TextField" icon="APPLE" inputPrompt="Placeholder"/>
+                        <textField id="textFieldRO" caption="Read-only" editable="false"/>
+                        <textField id="textFieldD" caption="Disabled" enable="false"/>
+                        <textField id="textFieldR" caption="Required" required="true" requiredMessage="Required"
+                                   description="Description"/>
+                        <hbox spacing="true">
+                            <textField caption="LARGE" inputPrompt="Placeholder" stylename="large"/>
+                            <textField caption="Medium" inputPrompt="Placeholder" stylename="medium"/>
+                            <textField caption="small" inputPrompt="Placeholder" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="TextArea" spacing="true" collapsable="true" collapsed="true"
+                              orientation="horizontal">
+                        <vbox spacing="true">
+                            <textArea id="textArea" caption="TextArea" inputPrompt="Placeholder" width="100%"/>
+                            <textArea id="textAreaRO" caption="Read-only" editable="false" width="100%"/>
+                            <textArea id="textAreaD" caption="Disabled" enable="false" width="100%"/>
+                            <textArea id="textAreaR" caption="Required" required="true" width="100%"/>
+                        </vbox>
+
+                        <vbox spacing="true">
+                            <textArea caption="LARGE" inputPrompt="Placeholder" stylename="large" width="100%"/>
+                            <textArea caption="Medium" inputPrompt="Placeholder" stylename="medium" width="100%"/>
+                            <textArea caption="small" inputPrompt="Placeholder" stylename="small" width="100%"/>
+                        </vbox>
+                    </groupBox>
+
+                    <groupBox caption="Resizable TextArea" spacing="true" collapsable="true" collapsed="true"
+                              orientation="horizontal">
+                        <vbox spacing="true">
+                            <resizableTextArea id="resizableTextArea" caption="Resizable TextArea"
+                                               inputPrompt="Placeholder"/>
+                            <resizableTextArea id="resizableTextAreaRO" caption="Read-only" editable="false"/>
+                            <resizableTextArea id="resizableTextAreaD" caption="Disabled" enable="false"/>
+                            <resizableTextArea id="resizableTextAreaR" caption="Required" required="true"/>
+                            <resizableTextArea caption="LARGE" inputPrompt="Placeholder" stylename="large"/>
+                            <resizableTextArea caption="Medium" inputPrompt="Placeholder" stylename="medium"/>
+                            <resizableTextArea caption="small" inputPrompt="Placeholder" stylename="small"/>
+                        </vbox>
+                    </groupBox>
+
+                    <groupBox caption="MaskedField" spacing="true" collapsable="true" collapsed="true">
+                        <maskedField id="maskedField" caption="MaskedField" icon="APPLE" mask="###-##-##"/>
+                        <maskedField id="maskedFieldRO" caption="Read-only" editable="false" mask="###-##-##"/>
+                        <maskedField id="maskedFieldD" caption="Disabled" enable="false" mask="###-##-##"/>
+                        <maskedField id="maskedFieldR" caption="Required" required="true" requiredMessage="Required"
+                                     description="Description" mask="###-##-##"/>
+                        <hbox spacing="true">
+                            <maskedField caption="LARGE" mask="###-##-##" stylename="large"/>
+                            <maskedField caption="Medium" mask="###-##-##" stylename="medium"/>
+                            <maskedField caption="small" mask="###-##-##" stylename="small"/>
+                        </hbox>
+                    </groupBox>
+                        <!--todo rp tagPicker-->
+                    <!--<groupBox caption="TokenList" spacing="true" collapsable="true" collapsed="true">
+                        <tokenList id="tokenListSample" caption="TokenList">
+                            <lookup lookup="true"/>
+                        </tokenList>
+
+                        <tokenList id="tokenListInline" caption="TokenList | Inline" inline="true">
+                            <lookup/>
+                        </tokenList>
+
+                        <tokenList id="tokenListSimple" caption="TokenList | Simple" simple="true">
+                            <lookup/>
+                        </tokenList>
+
+                        <tokenList id="tokenListRO" caption="TokenList | Read-Only" editable="false">
+                            <lookup/>
+                        </tokenList>
+
+                        <tokenList id="tokenListDisabled" caption="TokenList | Disabled" enable="false">
+                            <lookup/>
+                        </tokenList>
+
+                        <tokenList id="tokenListDisabledSimple" caption="TokenList | Simple | Disabled" enable="false"
+                                   simple="true">
+                            <lookup/>
+                        </tokenList>
+
+                        <hbox spacing="true">
+                            <tokenList id="tokenListLarge" caption="LARGE" stylename="large">
+                                <lookup lookup="true"/>
+                            </tokenList>
+
+                            <tokenList id="tokenListMedium" caption="Medium" stylename="medium">
+                                <lookup lookup="true"/>
+                            </tokenList>
+
+                            <tokenList id="tokenListSmall" caption="small" stylename="small">
+                                <lookup lookup="true"/>
+                            </tokenList>
+                        </hbox>
+                    </groupBox>-->
+
+                    <groupBox caption="Tree" spacing="true" collapsable="true" collapsed="true">
+                        <tree id="tree" width="100%" height="200px"/>
+                    </groupBox>
+
+                    <groupBox caption="TreeDataGrid" spacing="true" collapsable="true" collapsed="true">
+                        <treeDataGrid id="treeDataGridSample" metaClass="helium_Directory" width="100%" height="300px"
+                                      hierarchyProperty="parent"
+                                      aggregatable="true" aggregationPosition="TOP">
+                            <columns>
+                                <column property="name">
+                                    <aggregation type="COUNT"/>
+                                </column>
+                                <column property="parent"/>
+                            </columns>
+                        </treeDataGrid>
+                    </groupBox>
+
+                    <groupBox caption="TwinColumn" spacing="true" collapsable="true" collapsed="true">
+                        <twinColumn id="twinColumnSample"
+                                    addAllBtnEnabled="true"/>
+                        <twinColumn id="twinColumnRequired"
+                                    required="true"
+                                    addAllBtnEnabled="true"/>
+                        <hbox spacing="true">
+                            <twinColumn id="twinColumnLarge"
+                                        stylename="large"
+                                        addAllBtnEnabled="true"
+                                        width="100%"/>
+                            <twinColumn id="twinColumnMedium"
+                                        stylename="medium"
+                                        addAllBtnEnabled="true"
+                                        width="100%"/>
+                            <twinColumn id="twinColumnSmall"
+                                        stylename="small"
+                                        addAllBtnEnabled="true"
+                                        width="100%"/>
+                        </hbox>
+                    </groupBox>
+                </scrollBox>
+            </tab>
+        </tabSheet>
+    </layout>
+</fragment>
