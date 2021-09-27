@@ -2,7 +2,7 @@
 @import "addons";
 @import "ext-helium";
 
-.ext-helium {
+.helium {
   @include addons;
   @include ext-helium;
 }

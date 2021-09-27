@@ -1,5 +1,5 @@
-@import "../helium/helium";
-@import "app/mainscreen";
+@import "/helium";
+@import "io.jmix.editor.helium/app/mainscreen";
 
 @mixin ext-helium {
   @include helium;
