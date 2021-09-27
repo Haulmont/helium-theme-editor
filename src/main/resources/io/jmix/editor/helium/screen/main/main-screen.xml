@@ -5,50 +5,46 @@
                    stylename="jmix-drawer-layout">
             <drawer id="drawer"
                     expandOnHover="true">
-                <vbox id="themeMenu"
-                      expand="settingsPanel"
-                      height="100%">
-                    <cssLayout id="controlPanel"
-                               stylename="control-panel"
-                               width="100%">
-                        <button id="resetBtn" caption="msg://resetBtn.caption" icon="ROTATE_LEFT"
-                                width="100%"
-                                stylename="secondary"/>
-                        <button id="downloadBtn" caption="msg://downloadBtn.caption" icon="DOWNLOAD"
-                                stylename="primary"
-                                width="100%"/>
-                        <button id="uploadBtn" caption="msg://uploadBtn.caption" icon="UPLOAD"
-                                width="100%"/>
-                    </cssLayout>
-                    <scrollBox id="settingsPanel"
-                               margin="true"
-                               stylename="settings-panel"
-                               spacing="true">
-                        <vbox margin="true" width="100%" stylename="card">
-                            <vbox>
-                                <radioButtonGroup id="baseThemeModeField"
-                                                  orientation="horizontal"
-                                                  captionProperty="name"
-                                                  align="MIDDLE_CENTER"/>
-                            </vbox>
-                            <vbox>
-                                <label id="templateLabel"
-                                       align="MIDDLE_LEFT"
-                                       stylename="bold"
-                                       value="msg://templateLabel.value" width="100%"/>
-                                <comboBox id="templateField"
-                                          width="100%"
-                                          nullOptionVisible="false"/>
-                            </vbox>
+                <cssLayout id="controlPanel"
+                           stylename="control-panel"
+                           width="100%">
+                    <button id="resetBtn" caption="msg://resetBtn.caption" icon="ROTATE_LEFT"
+                            width="100%"
+                            stylename="secondary"/>
+                    <button id="downloadBtn" caption="msg://downloadBtn.caption" icon="DOWNLOAD"
+                            stylename="primary"
+                            width="100%"/>
+                    <button id="uploadBtn" caption="msg://uploadBtn.caption" icon="UPLOAD"
+                            width="100%"/>
+                </cssLayout>
+                <scrollBox id="settingsPanel"
+                           margin="true"
+                           stylename="settings-panel"
+                           spacing="true">
+                    <vbox margin="true" width="100%" stylename="card">
+                        <vbox>
+                            <radioButtonGroup id="baseThemeModeField"
+                                              orientation="horizontal"
+                                              captionProperty="name"
+                                              align="MIDDLE_CENTER"/>
                         </vbox>
-                        <hbox spacing="true" width="100%">
-                            <checkBox id="advancedModeValue"
-                                      align="MIDDLE_LEFT"
-                                      captionAsHtml="true"
-                                      caption="msg://advancedModeLabel.value"/>
-                        </hbox>
-                    </scrollBox>
-                </vbox>
+                        <vbox>
+                            <label id="templateLabel"
+                                   align="MIDDLE_LEFT"
+                                   stylename="bold"
+                                   value="msg://templateLabel.value" width="100%"/>
+                            <comboBox id="templateField"
+                                      width="100%"
+                                      nullOptionVisible="false"/>
+                        </vbox>
+                    </vbox>
+                    <hbox spacing="true" width="100%">
+                        <checkBox id="advancedModeValue"
+                                  align="MIDDLE_LEFT"
+                                  captionAsHtml="true"
+                                  caption="msg://advancedModeLabel.value"/>
+                    </hbox>
+                </scrollBox>
                 <cssLayout id="controlBox"
                            stylename="jmix-drawer-footer"
                            width="100%">
@@ -60,7 +56,8 @@
             </drawer>
             <workArea id="workArea"
                       stylename="jmix-workarea"
-                      height="100%">
+                      height="100%"
+                      width="100%">
                 <initialLayout spacing="true" margin="true">
                 </initialLayout>
             </workArea>

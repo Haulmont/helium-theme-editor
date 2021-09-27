@@ -1,7 +1,9 @@
-@import "/helium";
+@import "../helium/helium";
 @import "io.jmix.editor.helium/app/mainscreen";
+@import "io.jmix.editor.helium/components/themevariablefield/themevariablefield";
 
 @mixin ext-helium {
   @include helium;
   @include helium-ext-mainscreen;
+  @include helium-ext-themevariablefield;
 }

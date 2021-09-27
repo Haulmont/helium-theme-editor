@@ -1,0 +1,31 @@
+@mixin helium-ext-themevariablefield($primary-stylename: theme-variable-field) {
+
+  .#{$primary-stylename} {
+    & .jmix-fglayout-slot {
+      &:nth-of-type(2),
+      &:nth-of-type(4) {
+        padding-left: 0 !important;
+      }
+
+      &:nth-of-type(4) {
+        width: 100% !important;
+      }
+
+      & .v-textfield {
+        padding-right: 2 * $v-unit-size;
+      }
+
+      & .jmix-color-picker > .v-colorpicker {
+        background: none;
+        border: none;
+        width: $v-unit-size;
+      }
+
+      & .reset-btn {
+        margin-left: (-1) * $v-layout-margin-left;
+        padding-left: $v-layout-margin-left;
+        padding-right: $v-unit-size - $v-layout-margin-left;
+      }
+    }
+  }
+}

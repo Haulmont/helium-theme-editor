@@ -7,4 +7,12 @@
       border-radius: 0;
     }
   }
+
+  .settings-panel {
+    flex-grow: 1;
+  }
+
+  .padding-less .jmix-groupbox-content {
+    padding-left: round($v-unit-size * 1.4 / 3);
+  }
 }
