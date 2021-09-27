@@ -1,0 +1,21 @@
+<composite xmlns="http://jmix.io/schema/ui/composite">
+    <form width="100%" stylename="theme-variable-field">
+        <column flex="1">
+            <label id="captionField" stylename="bold" width="100%" colspan="2"/>
+            <textField id="valueField"/>
+        </column>
+        <column>
+            <button id="resetBtn" icon="ROTATE_LEFT" stylename="borderless reset-btn" width="100%" enable="false"/>
+        </column>
+        <column>
+            <jsComponent id="jsComponent"
+                         height="100%"
+                         initFunctionName="com_haulmont_editor_helium_ThemeVariableField">
+                <dependencies>
+                    <dependency path="vaadin://themevariablefield/theme-variable-field-connector.js"/>
+                </dependencies>
+            </jsComponent>
+            <colorPicker id="colorValueField" hsvVisible="true"/>
+        </column>
+    </form>
+</composite>
