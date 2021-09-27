@@ -10,7 +10,7 @@
         <column>
             <jsComponent id="jsComponent"
                          height="100%"
-                         initFunctionName="com_haulmont_editor_helium_ThemeVariableField">
+                         initFunctionName="io_jmix_editor_helium_components_themevariablefield_ThemeVariableField">
                 <dependencies>
                     <dependency path="vaadin://themevariablefield/theme-variable-field-connector.js"/>
                 </dependencies>

@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-@CompositeDescriptor("/io/jmix/editor/helium/components/themevariablefield/theme-variable-field.xml")
+@CompositeDescriptor("theme-variable-field.xml")
 public class ThemeVariableField extends CompositeComponent<Form>
         implements Field<ThemeVariable>,
         CompositeWithIcon,

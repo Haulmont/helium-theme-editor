@@ -1,29 +1,54 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://application.caption">
-
     <layout>
         <cssLayout id="horizontalWrap"
                    stylename="jmix-drawer-layout">
-            <drawer id="drawer" expandOnHover="true">
-                <cssLayout id="appTitleBox"
-                           stylename="jmix-drawer-header"
-                           width="100%">
-                    <image id="logoImage"
-                           stylename="app-icon"
-                           scaleMode="SCALE_DOWN">
-                        <resource>
-                            <theme path="branding/app-icon-menu.svg"/>
-                        </resource>
-                    </image>
-                    <label id="appTitleLabel"
-                           stylename="app-title"
-                           value="msg://application.logoLabel"/>
-                </cssLayout>
-                <sideMenu id="sideMenu"
-                          width="100%"
-                          stylename="jmix-drawer-content"/>
-                <timeZoneIndicator id="timeZoneIndicator"
-                                   align="MIDDLE_CENTER"/>
+            <drawer id="drawer"
+                    expandOnHover="true">
+                <vbox id="themeMenu"
+                      expand="settingsPanel"
+                      height="100%">
+                    <cssLayout id="controlPanel"
+                               stylename="control-panel"
+                               width="100%">
+                        <button id="resetBtn" caption="msg://resetBtn.caption" icon="ROTATE_LEFT"
+                                width="100%"
+                                stylename="secondary"/>
+                        <button id="downloadBtn" caption="msg://downloadBtn.caption" icon="DOWNLOAD"
+                                stylename="primary"
+                                width="100%"/>
+                        <button id="uploadBtn" caption="msg://uploadBtn.caption" icon="UPLOAD"
+                                width="100%"/>
+                    </cssLayout>
+                    <scrollBox id="settingsPanel"
+                               margin="true"
+                               stylename="settings-panel"
+                               spacing="true">
+                        <vbox margin="true" width="100%" stylename="card">
+                            <vbox>
+                                <radioButtonGroup id="baseThemeModeField"
+                                                  orientation="horizontal"
+                                                  captionProperty="name"
+                                                  align="MIDDLE_CENTER"/>
+                            </vbox>
+                            <vbox>
+                                <label id="templateLabel"
+                                       align="MIDDLE_LEFT"
+                                       stylename="bold"
+                                       value="msg://templateLabel.value" width="100%"/>
+                                <comboBox id="templateField"
+                                          width="100%"
+                                          nullOptionVisible="false"/>
+                            </vbox>
+                        </vbox>
+                        <hbox spacing="true" width="100%">
+                            <checkBox id="advancedModeValue"
+                                      align="MIDDLE_LEFT"
+                                      captionAsHtml="true"
+                                      caption="msg://advancedModeLabel.value"/>
+                        </hbox>
+                    </scrollBox>
+                </vbox>
                 <cssLayout id="controlBox"
                            stylename="jmix-drawer-footer"
                            width="100%">
@@ -31,11 +56,6 @@
                             icon="CHEVRON_LEFT"
                             stylename="jmix-drawer-collapse-button"
                             description="msg://sideMenuCollapse"/>
-                    <userIndicator id="userIndicator"
-                                   align="MIDDLE_CENTER"/>
-                    <logoutButton id="logoutButton"
-                                  icon="SIGN_OUT"
-                                  description="msg://logoutBtnDescription"/>
                 </cssLayout>
             </drawer>
             <workArea id="workArea"

@@ -1,0 +1,10 @@
+@mixin helium-ext-mainscreen() {
+
+  .control-panel {
+    display: flex;
+
+    .v-button {
+      border-radius: 0;
+    }
+  }
+}

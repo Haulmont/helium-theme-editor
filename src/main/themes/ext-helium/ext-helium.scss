@@ -1,5 +1,7 @@
 @import "../helium/helium";
+@import "app/mainscreen";
 
 @mixin ext-helium {
   @include helium;
+  @include helium-ext-mainscreen;
 }
