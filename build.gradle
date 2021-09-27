@@ -44,3 +44,15 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+bootJar {
+    processResources {
+        def props = new Properties()
+        file("src/main/resources/application.properties").withInputStream { props.load(it) }
+
+        from(project.buildDir.path + "/tmp/themes/VAADIN/themes/"
+                + props.getProperty("helium.editor.themeVariablesFilePath")) {
+            into 'helium'
+        }
+    }
+}
