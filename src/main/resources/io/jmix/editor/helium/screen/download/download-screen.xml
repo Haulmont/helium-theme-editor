@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://caption">
+    <dialogMode height="600" width="800"/>
+    <facets>
+        <clipboardTrigger id="clipboardTrigger" button="clipboardBtn" input="textArea"/>
+    </facets>
+    <layout expand="textArea" spacing="true" margin="true">
+        <label id="descriptionLabel" value="msg://description" width="100%" htmlEnabled="true"/>
+        <label id="firstStepLabel" width="100%" htmlEnabled="true"/>
+        <label id="secondStepLabel" value="msg://secondStep" width="100%" htmlEnabled="true"/>
+        <textArea id="textArea" width="100%" editable="false"/>
+        <hbox id="buttonsBox" align="MIDDLE_RIGHT" spacing="true">
+            <button id="clipboardBtn" caption="msg://clipboardBtn" icon="CLIPBOARD" stylename="primary"/>
+            <button id="downloadBtn" caption="msg://downloadBtn" icon="DOWNLOAD" stylename="secondary" visible="false"/>
+            <button id="closeBtn" caption="msg://closeBtn"/>
+        </hbox>
+    </layout>
+</window>

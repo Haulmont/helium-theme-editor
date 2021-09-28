@@ -1,7 +1,10 @@
 package io.jmix.editor.helium.screen.main;
 
+import com.google.common.collect.ImmutableMap;
 import com.vaadin.ui.JavaScript;
 import io.jmix.editor.helium.components.themevariablefield.ThemeVariableField;
+import io.jmix.editor.helium.screen.download.DownloadScreen;
+import io.jmix.editor.helium.screen.upload.UploadScreen;
 import io.jmix.editor.helium.tools.*;
 import io.jmix.ui.AppUI;
 import io.jmix.ui.Dialogs;
@@ -135,20 +138,6 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
         }
     }
 
-
-    // todo rp remove
-   /* @Subscribe("mobileMenuButton")
-    public void onMobileMenuButtonClick(Button.ClickEvent event) {
-        String stylename = sideMenuPanel.getStyleName();
-        if (stylename != null
-                && !stylename.isEmpty()
-                && stylename.contains(HaloTheme.SIDEMENU_PANEL_OPEN)) {
-            sideMenuPanel.removeStyleName(HaloTheme.SIDEMENU_PANEL_OPEN);
-        } else {
-            sideMenuPanel.addStyleName(HaloTheme.SIDEMENU_PANEL_OPEN);
-        }
-    }*/
-
     @Subscribe("resetBtn")
     public void onResetBtnClick(Button.ClickEvent event) {
         if (customTemplate.equals(templateField.getValue())) {
@@ -174,8 +163,7 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
 
     @Subscribe("downloadBtn")
     public void onDownloadBtnClick(Button.ClickEvent event) {
-        // todo rp implement
-        /*screenBuilders.screen(this)
+        screenBuilders.screen(this)
                 .withScreenClass(DownloadScreen.class)
                 .withOptions(new MapScreenOptions(
                         ImmutableMap.of(
@@ -185,13 +173,12 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
                                 generateDownloadText()
                         )
                 ))
-                .show();*/
+                .show();
     }
 
     @Subscribe("uploadBtn")
     protected void onUploadBtnClick(Button.ClickEvent event) {
-        // todo rp implement
-        /*screenBuilders.screen(this)
+        screenBuilders.screen(this)
                 .withScreenClass(UploadScreen.class)
                 .withOptions(new MapScreenOptions(
                         ImmutableMap.of(
@@ -203,13 +190,13 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
                 ))
                 .withAfterCloseListener(afterScreenCloseEvent -> {
                     if (afterScreenCloseEvent.closedWith(StandardOutcome.COMMIT)) {
-                        UploadScreen uploadScreen = afterScreenCloseEvent.getScreen();
+                        UploadScreen uploadScreen = afterScreenCloseEvent.getSource();
                         baseThemeModeField.setValue(uploadScreen.getBaseThemeMode());
                         resetValues();
                         applyUploadedThemeVariables(uploadScreen.getUploadedThemeVariables());
                     }
                 })
-                .show();*/
+                .show();
     }
 
     protected void applyUploadedThemeVariables(List<ModifiedThemeVariableDetails> uploadedThemeVariables) {
