@@ -87,11 +87,8 @@
                                 </columns>
                             </table>
                         </vbox>
-                        <vbox id="tokenListBox" margin="true" stylename="card tokenlist-box" height="300px">
-                            <!--                         todo rp tagPicker   -->
-                            <!--  <tokenList id="basicTokenList" width="100%" height="100%">
-                                  <lookup/>
-                              </tokenList>-->
+                        <vbox id="tagPickerBox" margin="true" stylename="card tagpicker-box" height="300px">
+                            <tagPicker id="basicTagPicker" width="100%" height="100%"/>
                         </vbox>
                         <vbox spacing="true" stylename="radiobutton-checkbox-box">
                             <vbox id="radioButtonGroupBox" stylename="card" height="144px">
@@ -113,7 +110,7 @@
                             <tab id="tabAccordion11"
                                  caption="Tab 1"
                                  expand="spacerAccordion1"
-                                 icon="icons/upload.png"
+                                 icon="UPLOAD"
                                  margin="true"
                                  spacing="true">
                                 <label value="Label 1"/>
@@ -124,7 +121,7 @@
                             <tab id="tabAccordion12"
                                  caption="Tab 2"
                                  expand="spacerAccordion2"
-                                 icon="icons/upload.png"
+                                 icon="UPLOAD"
                                  margin="true"
                                  spacing="true">
                                 <label value="Label 2"/>
@@ -228,9 +225,9 @@
                         </hbox>
                         <hbox spacing="true">
                             <button icon="APPLE"/>
-                            <button icon="app/images/new-window.png"/>
-                            <button icon="app/images/new-window.png" stylename="icon-only"/>
-                            <button icon="app/images/new-window.png" stylename="quiet icon-only"/>
+                            <button icon="TH_LARGE"/>
+                            <button icon="TH_LARGE" stylename="icon-only"/>
+                            <button icon="TH_LARGE" stylename="quiet icon-only"/>
                         </hbox>
                         <hbox spacing="true">
                             <popupButton id="popupButton1"
@@ -550,7 +547,7 @@
                                 <column property="username">
                                     <aggregation type="COUNT"/>
                                 </column>
-<!--                                <column property="group"/>--> <!--todo rp group-->
+                                <!--                                <column property="group"/>--> <!--todo rp group-->
                                 <column property="active"/>
                             </columns>
 
@@ -624,35 +621,50 @@
                     <groupBox caption="Link" spacing="true" collapsable="true" collapsed="true">
                         <link caption="Link"
                               target="_blank"
-                              url="https://www.cuba-platform.com/"/>
+                              url="https://www.jmix.io"/>
                         <link caption="Link"
-                              icon="icons/chain.png"
+                              icon="CHAIN"
                               target="_blank"
-                              url="https://www.cuba-platform.com/"/>
-                        <link icon="icons/chain.png"
+                              url="https://www.jmix.io"/>
+                        <link icon="CHAIN"
                               target="_blank"
-                              url="https://www.cuba-platform.com/"/>
+                              url="https://www.jmix.io"/>
                         <link caption="Disabled"
-                              icon="icons/chain.png"
+                              icon="CHAIN"
                               target="_blank"
-                              url="https://www.cuba-platform.com/"
+                              url="https://www.jmix.io"
                               enable="false"/>
                         <hbox>
                             <link caption="LARGE"
-                                  icon="icons/chain.png"
+                                  icon="CHAIN"
                                   target="_blank"
-                                  url="https://www.cuba-platform.com/"
+                                  url="https://www.jmix.io"
                                   stylename="large"/>
                             <link caption="Medium"
-                                  icon="icons/chain.png"
+                                  icon="CHAIN"
                                   target="_blank"
-                                  url="https://www.cuba-platform.com/"
+                                  url="https://www.jmix.io"
                                   stylename="medium"/>
                             <link caption="small"
-                                  icon="icons/chain.png"
+                                  icon="CHAIN"
                                   target="_blank"
-                                  url="https://www.cuba-platform.com/"
+                                  url="https://www.jmix.io"
                                   stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
+                    <groupBox caption="MultiSelectList" collapsable="true" spacing="true" collapsed="true">
+                        <multiSelectList id="multiSelectListSample" caption="MultiSelectList"/>
+                        <multiSelectList id="multiSelectListRO" caption="MultiSelectList | Read-Only" editable="false"/>
+                        <multiSelectList id="multiSelectListDisabled" caption="MultiSelectList | Disabled"
+                                         enable="false"/>
+                        <multiSelectList id="multiSelectListRequired" caption="MultiSelectList | Required"
+                                         required="true"/>
+
+                        <hbox spacing="true">
+                            <multiSelectList id="multiSelectListLarge" caption="LARGE" stylename="large"/>
+                            <multiSelectList id="multiSelectListMedium" caption="Medium" stylename="medium"/>
+                            <multiSelectList id="multiSelectListSmall" caption="small" stylename="small"/>
                         </hbox>
                     </groupBox>
 
@@ -666,68 +678,47 @@
                         <button id="showSystemBtn" caption="System"/>
                         <label id="spacerN"/>
                     </groupBox>
-                    <!--todo rp-->
-                    <!--<groupBox caption="OptionsGroup" spacing="true" collapsable="true" collapsed="true">
-                        <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"/>
-                        <optionsGroup id="optionsGroupRO" caption="Read-only" editable="false"
-                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
-                        <optionsGroup id="optionsGroupD" caption="Disabled" enable="false"
-                                      optionsEnum="io.jmix.editor.helium.entity.Grade"/>
 
-                        <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                      orientation="horizontal"/>
+                    <groupBox caption="Pagination" spacing="true" collapsable="true" collapsed="true">
+                        <label value="Pagination"/>
+                        <pagination id="paginationSample"
+                                    itemsPerPageDefaultValue="1"
+                                    maxVisiblePages="3"/>
 
-                        <hbox stylename="card" spacing="true">
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                          align="MIDDLE_CENTER" stylename="large"/>
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                          align="MIDDLE_CENTER" stylename="medium"/>
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                          align="MIDDLE_CENTER" stylename="small"/>
+                        <label value="Pagination | Items per page options"/>
+                        <pagination id="paginationPerPageOptions"
+                                    itemsPerPageOptions="1, 2, 3, 4"
+                                    itemsPerPageUnlimitedOptionVisible="false"
+                                    itemsPerPageVisible="true"
+                                    itemsPerPageDefaultValue="1"
+                                    maxVisiblePages="3"/>
+
+                        <label value="Pagination | Without loader"/>
+                        <pagination id="paginationWithoutLoader"
+                                    itemsPerPageDefaultValue="1"
+                                    maxVisiblePages="3"/>
+                        <pagination id="paginationPerPageOptionsWithoutLoader"
+                                    itemsPerPageOptions="1, 2, 3, 4"
+                                    itemsPerPageUnlimitedOptionVisible="false"
+                                    itemsPerPageVisible="true"
+                                    itemsPerPageDefaultValue="1"
+                                    maxVisiblePages="3"/>
+
+                        <hbox spacing="true" stylename="card" margin="true">
+                            <pagination id="paginationLarge"
+                                        itemsPerPageDefaultValue="1"
+                                        maxVisiblePages="3"
+                                        stylename="large"/>
+                            <pagination id="paginationMedium"
+                                        itemsPerPageDefaultValue="1"
+                                        maxVisiblePages="3"
+                                        stylename="medium"/>
+                            <pagination id="paginationSmall"
+                                        itemsPerPageDefaultValue="1"
+                                        maxVisiblePages="3"
+                                        stylename="small"/>
                         </hbox>
-
-                        <hbox margin="true" stylename="card">
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
-                                          align="MIDDLE_CENTER"/>
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
-                                          align="MIDDLE_CENTER" stylename="large"/>
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
-                                          align="MIDDLE_CENTER" stylename="medium"/>
-                            <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" multiselect="true"
-                                          align="MIDDLE_CENTER" stylename="small"/>
-                        </hbox>
-                        <optionsGroup optionsEnum="io.jmix.editor.helium.entity.Grade" orientation="horizontal"
-                                      multiselect="true"/>
                     </groupBox>
-
-                    <groupBox caption="OptionsList" spacing="true" collapsable="true" collapsed="true">
-                        <optionsList optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                     height="180px"
-                                     width="160px"/>
-                        <optionsList id="optionsListRO" caption="Read-only" editable="false"
-                                     optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                     height="180px"
-                                     width="160px"/>
-                        <optionsList id="optionsListD" caption="Disabled" enable="false"
-                                     optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                     height="180px"
-                                     width="160px"/>
-                        <optionsList caption="Required" required="true"
-                                     optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                     height="180px"
-                                     width="160px"/>
-                        <hbox stylename="card" spacing="true" margin="true">
-                            <optionsList caption="LARGE"
-                                         optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                         stylename="large"/>
-                            <optionsList caption="Medium"
-                                         optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                         stylename="medium"/>
-                            <optionsList caption="small"
-                                         optionsEnum="io.jmix.editor.helium.entity.Grade"
-                                         stylename="small"/>
-                        </hbox>
-                    </groupBox>-->
 
                     <groupBox caption="PopupView" spacing="true" collapsable="true" collapsed="true">
                         <popupView caption="Hide by clicking on outside area" minimizedValue="Click me!"
@@ -755,14 +746,14 @@
                                         <column id="name">
                                             <aggregation type="COUNT"/>
                                         </column>
-<!--                                        <column id="group"/>--> <!--todo rp group-->
+                                        <!--                                        <column id="group"/>--> <!--todo rp group-->
                                         <column id="active">
                                             <aggregation type="COUNT"/>
                                         </column>
                                     </columns>
                                     <buttonsPanel>
                                         <relatedEntities for="tablePopupView">
-<!--                                          todo rp related property  -->
+                                            <!--                                          todo rp related property  -->
                                         </relatedEntities>
                                     </buttonsPanel>
                                 </table>
@@ -804,6 +795,22 @@
                             <richTextArea caption="Medium" stylename="medium"/>
                             <richTextArea caption="small" stylename="small"/>
                         </vbox>
+                    </groupBox>
+
+                    <groupBox caption="SingleSelectList" spacing="true" collapsable="true" collapsed="true">
+                        <singleSelectList id="singleSelectListSample" caption="SingleSelectList"/>
+                        <singleSelectList id="singleSelectListRO" caption="SingleSelectList | Read-Only"
+                                          editable="false"/>
+                        <singleSelectList id="singleSelectListDisabled" caption="SingleSelectList | Disabled"
+                                          enable="false"/>
+                        <singleSelectList id="singleSelectListRequired" caption="SingleSelectList | Required"
+                                          required="true"/>
+
+                        <hbox spacing="true">
+                            <singleSelectList id="singleSelectListLarge" caption="LARGE" stylename="large"/>
+                            <singleSelectList id="singleSelectListMedium" caption="Medium" stylename="medium"/>
+                            <singleSelectList id="singleSelectListSmall" caption="small" stylename="small"/>
+                        </hbox>
                     </groupBox>
 
                     <groupBox caption="Slider" spacing="true" collapsable="true" collapsed="true">
@@ -966,7 +973,7 @@
                                 <column id="name">
                                     <aggregation type="COUNT"/>
                                 </column>
-<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <!--                                <column id="group"/>--> <!--todo rp group-->
                                 <column id="active">
                                     <aggregation type="COUNT"/>
                                 </column>
@@ -987,7 +994,7 @@
                                 <column id="name">
                                     <aggregation type="COUNT"/>
                                 </column>
-<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <!--                                <column id="group"/>--> <!--todo rp group-->
                                 <column id="active">
                                     <aggregation type="COUNT"/>
                                 </column>
@@ -1011,7 +1018,7 @@
                             <columns>
                                 <column id="username"/>
                                 <column id="name"/>
-<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <!--                                <column id="group"/>--> <!--todo rp group-->
                                 <column id="active"/>
                             </columns>
                         </table>
@@ -1022,7 +1029,7 @@
                             <columns>
                                 <column id="username"/>
                                 <column id="name"/>
-<!--                                <column id="group"/>--> <!--todo rp group-->
+                                <!--                                <column id="group"/>--> <!--todo rp group-->
                                 <column id="active"/>
                             </columns>
                         </table>
@@ -1033,7 +1040,7 @@
                             <columns>
                                 <column id="username"/>
                                 <column id="name"/>
-<!--                                <column id="group"/>--> <!--todo rp open-->
+                                <!--                                <column id="group"/>--> <!--todo rp open-->
                                 <column id="active"/>
                             </columns>
                         </table>
@@ -1064,7 +1071,7 @@
                             <tab id="tab1"
                                  caption="Tab 1"
                                  expand="spacer1"
-                                 icon="icons/upload.png"
+                                 icon="UPLOAD"
                                  margin="true"
                                  spacing="true">
                                 <label value="Label 1"/>
@@ -1075,7 +1082,7 @@
                             <tab id="tab2"
                                  caption="Tab 2"
                                  expand="spacer2"
-                                 icon="icons/upload.png"
+                                 icon="UPLOAD"
                                  margin="true"
                                  spacing="true">
                                 <label value="Label 2"/>
@@ -1161,6 +1168,40 @@
                         </vbox>
                     </groupBox>
 
+                    <groupBox caption="SimplePagination" spacing="true" collapsable="true" collapsed="true">
+                        <label value="SimplePagination"/>
+                        <simplePagination id="simplePaginationSample"
+                                          itemsPerPageDefaultValue="2"/>
+
+                        <label value="SimplePagination | Items per page options"/>
+                        <simplePagination id="simplePaginationItemsPerPage"
+                                          itemsPerPageUnlimitedOptionVisible="false"
+                                          itemsPerPageVisible="true"
+                                          itemsPerPageOptions="1, 2, 3, 4"
+                                          itemsPerPageDefaultValue="2"/>
+
+                        <label value="SimplePagination | Without loader"/>
+                        <simplePagination id="simplePaginationWithoutLoader"
+                                          itemsPerPageDefaultValue="2"/>
+                        <simplePagination id="simplePaginationItemsPerPageWithoutLoader"
+                                          itemsPerPageUnlimitedOptionVisible="false"
+                                          itemsPerPageVisible="true"
+                                          itemsPerPageOptions="1, 2, 3, 4"
+                                          itemsPerPageDefaultValue="2"/>
+
+                        <hbox spacing="true" stylename="card" margin="true">
+                            <simplePagination id="simplePaginationLarge"
+                                              itemsPerPageDefaultValue="2"
+                                              stylename="large"/>
+                            <simplePagination id="simplePaginationMedium"
+                                              itemsPerPageDefaultValue="2"
+                                              stylename="medium"/>
+                            <simplePagination id="simplePaginationSmall"
+                                              itemsPerPageDefaultValue="2"
+                                              stylename="small"/>
+                        </hbox>
+                    </groupBox>
+
                     <groupBox caption="MaskedField" spacing="true" collapsable="true" collapsed="true">
                         <maskedField id="maskedField" caption="MaskedField" icon="APPLE" mask="###-##-##"/>
                         <maskedField id="maskedFieldRO" caption="Read-only" editable="false" mask="###-##-##"/>
@@ -1173,47 +1214,57 @@
                             <maskedField caption="small" mask="###-##-##" stylename="small"/>
                         </hbox>
                     </groupBox>
-                        <!--todo rp tagPicker-->
-                    <!--<groupBox caption="TokenList" spacing="true" collapsable="true" collapsed="true">
-                        <tokenList id="tokenListSample" caption="TokenList">
-                            <lookup lookup="true"/>
-                        </tokenList>
 
-                        <tokenList id="tokenListInline" caption="TokenList | Inline" inline="true">
-                            <lookup/>
-                        </tokenList>
-
-                        <tokenList id="tokenListSimple" caption="TokenList | Simple" simple="true">
-                            <lookup/>
-                        </tokenList>
-
-                        <tokenList id="tokenListRO" caption="TokenList | Read-Only" editable="false">
-                            <lookup/>
-                        </tokenList>
-
-                        <tokenList id="tokenListDisabled" caption="TokenList | Disabled" enable="false">
-                            <lookup/>
-                        </tokenList>
-
-                        <tokenList id="tokenListDisabledSimple" caption="TokenList | Simple | Disabled" enable="false"
-                                   simple="true">
-                            <lookup/>
-                        </tokenList>
+                    <groupBox caption="TagField" spacing="true" collapsable="true" collapsed="true">
+                        <tagField id="tagFieldSample" caption="TagField"/>
+                        <tagField id="tagFieldClearable" caption="TagField | Clear all button" clearAllVisible="true"/>
+                        <tagField id="tagFieldRO" caption="TagField | Read-Only" editable="false"/>
+                        <tagField id="tagFieldDisabled" caption="TagField | Disabled" enable="false"/>
+                        <tagField id="tagFieldRequired" caption="TagField | Required" required="true"/>
 
                         <hbox spacing="true">
-                            <tokenList id="tokenListLarge" caption="LARGE" stylename="large">
-                                <lookup lookup="true"/>
-                            </tokenList>
-
-                            <tokenList id="tokenListMedium" caption="Medium" stylename="medium">
-                                <lookup lookup="true"/>
-                            </tokenList>
-
-                            <tokenList id="tokenListSmall" caption="small" stylename="small">
-                                <lookup lookup="true"/>
-                            </tokenList>
+                            <tagField id="tagFieldLarge" caption="LARGE" stylename="large"/>
+                            <tagField id="tagFieldMedium" caption="Medium" stylename="medium"/>
+                            <tagField id="tagFieldSmall" caption="small" stylename="small"/>
                         </hbox>
-                    </groupBox>-->
+
+                    </groupBox>
+
+                    <groupBox caption="TagPicker" spacing="true" collapsable="true" collapsed="true">
+                        <tagPicker id="tagPickerSample" caption="TagPicker">
+                            <actions>
+                                <action id="tag_lookup" type="tag_lookup"/>
+                                <action id="clear" type="value_clear"/>
+                            </actions>
+                        </tagPicker>
+                        <tagPicker id="tagPickerInline" caption="TagPicker | Inline" inlineTags="true"/>
+                        <tagPicker id="tagPickerRO" caption="TagPicker | Read-Only" editable="false"/>
+                        <tagPicker id="tagPickerDisabled" caption="TagPicker | Disabled" enable="false"/>
+                        <tagPicker id="tagPickerRequired" caption="TagPicker | Required" required="true"/>
+
+                        <hbox spacing="true">
+                            <tagPicker id="tagPickerLarge" caption="LARGE" stylename="large">
+                                <actions>
+                                    <action id="tag_lookup" type="tag_lookup"/>
+                                    <action id="clear" type="value_clear"/>
+                                </actions>
+                            </tagPicker>
+
+                            <tagPicker id="tagPickerMedium" caption="Medium" stylename="medium">
+                                <actions>
+                                    <action id="tag_lookup" type="tag_lookup"/>
+                                    <action id="clear" type="value_clear"/>
+                                </actions>
+                            </tagPicker>
+
+                            <tagPicker id="tagPickerSmall" caption="small" stylename="small">
+                                <actions>
+                                    <action id="tag_lookup" type="tag_lookup"/>
+                                    <action id="clear" type="value_clear"/>
+                                </actions>
+                            </tagPicker>
+                        </hbox>
+                    </groupBox>
 
                     <groupBox caption="Tree" spacing="true" collapsable="true" collapsed="true">
                         <tree id="tree" width="100%" height="200px"/>

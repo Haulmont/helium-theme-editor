@@ -8,6 +8,7 @@ import io.jmix.ui.Dialogs;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.action.DialogAction;
+import io.jmix.ui.action.tagpicker.TagLookupAction;
 import io.jmix.ui.app.inputdialog.DialogActions;
 import io.jmix.ui.app.inputdialog.InputParameter;
 import io.jmix.ui.component.*;
@@ -19,7 +20,9 @@ import io.jmix.ui.component.data.table.ContainerGroupTableItems;
 import io.jmix.ui.component.data.table.ContainerTableItems;
 import io.jmix.ui.component.data.table.ContainerTreeTableItems;
 import io.jmix.ui.component.data.tree.ContainerTreeItems;
+import io.jmix.ui.component.pagination.data.PaginationLoaderBinder;
 import io.jmix.ui.model.CollectionContainer;
+import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.DataComponents;
 import io.jmix.ui.screen.*;
 import io.jmix.ui.theme.ThemeVariantsManager;
@@ -51,8 +54,8 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected ScrollBoxLayout innerPreviewBox;
     @Autowired
     protected Table<User> basicTable;
-    /*@Autowired
-    protected TokenList<User> basicTokenList;*/  // todo rp TagPicker
+    @Autowired
+    protected TagPicker<User> basicTagPicker;
     @Autowired
     protected ComboBox<String> basicRequiredComboBox;
     @Autowired
@@ -105,12 +108,11 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected void initContainerSamples() {
         basicTable.setItems(new ContainerTableItems<>(usersDc));
 
-        // todo rp tagPicker
-       /* basicTokenList.setOptionsList(usersDc.getItems());
-        basicTokenList.setValue(basicTokenList.getOptions()
+        basicTagPicker.setOptionsList(usersDc.getItems());
+        basicTagPicker.setValue(basicTagPicker.getOptions()
                 .getOptions()
                 .skip(2)
-                .collect(Collectors.toList()));*/
+                .collect(Collectors.toList()));
     }
 
     protected List<User> generateUsersSampleData() {
@@ -212,29 +214,73 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected CheckBox checkBoxD2;
 
     @Autowired
+    protected MultiSelectList<User> multiSelectListSample;
+    @Autowired
+    protected MultiSelectList<User> multiSelectListRO;
+    @Autowired
+    protected MultiSelectList<User> multiSelectListDisabled;
+    @Autowired
+    protected MultiSelectList<User> multiSelectListRequired;
+    @Autowired
+    protected MultiSelectList<User> multiSelectListLarge;
+    @Autowired
+    protected MultiSelectList<User> multiSelectListMedium;
+    @Autowired
+    protected MultiSelectList<User> multiSelectListSmall;
+
+    @Autowired
+    protected SingleSelectList<User> singleSelectListSample;
+    @Autowired
+    protected SingleSelectList<User> singleSelectListRO;
+    @Autowired
+    protected SingleSelectList<User> singleSelectListDisabled;
+    @Autowired
+    protected SingleSelectList<User> singleSelectListRequired;
+    @Autowired
+    protected SingleSelectList<User> singleSelectListLarge;
+    @Autowired
+    protected SingleSelectList<User> singleSelectListMedium;
+    @Autowired
+    protected SingleSelectList<User> singleSelectListSmall;
+
+    @Autowired
     protected RadioButtonGroup<Grade> radioButtonGroupD;
     @Autowired
     protected RadioButtonGroup<Grade> radioButtonGroupRO;
 
-    // todo rp TagPicker
-    /*@Autowired
-    protected TokenList<User> tokenListRO;
     @Autowired
-    protected TokenList<User> tokenListSmall;
+    protected TagField<User> tagFieldSample;
     @Autowired
-    protected TokenList<User> tokenListSimple;
+    protected TagField<User> tagFieldClearable;
     @Autowired
-    protected TokenList<User> tokenListSample;
+    protected TagField<User> tagFieldRO;
     @Autowired
-    protected TokenList<User> tokenListMedium;
+    protected TagField<User> tagFieldDisabled;
     @Autowired
-    protected TokenList<User> tokenListLarge;
+    protected TagField<User> tagFieldRequired;
     @Autowired
-    protected TokenList<User> tokenListInline;
+    protected TagField<User> tagFieldLarge;
     @Autowired
-    protected TokenList<User> tokenListDisabledSimple;
+    protected TagField<User> tagFieldMedium;
     @Autowired
-    protected TokenList<User> tokenListDisabled;*/
+    protected TagField<User> tagFieldSmall;
+
+    @Autowired
+    protected TagPicker<User> tagPickerSample;
+    @Autowired
+    protected TagPicker<User> tagPickerInline;
+    @Autowired
+    protected TagPicker<User> tagPickerRO;
+    @Autowired
+    protected TagPicker<User> tagPickerDisabled;
+    @Autowired
+    protected TagPicker<User> tagPickerRequired;
+    @Autowired
+    protected TagPicker<User> tagPickerSmall;
+    @Autowired
+    protected TagPicker<User> tagPickerMedium;
+    @Autowired
+    protected TagPicker<User> tagPickerLarge;
 
     @Autowired
     protected Table<User> tableSample;
@@ -288,6 +334,28 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected TwinColumn<Directory> twinColumnRequired;
     @Autowired
     protected TwinColumn<Directory> twinColumnSample;
+
+    @Autowired
+    protected Pagination paginationSample;
+    @Autowired
+    protected Pagination paginationPerPageOptions;
+    @Autowired
+    protected Pagination paginationLarge;
+    @Autowired
+    protected Pagination paginationMedium;
+    @Autowired
+    protected Pagination paginationSmall;
+
+    @Autowired
+    protected SimplePagination simplePaginationSample;
+    @Autowired
+    protected SimplePagination simplePaginationItemsPerPage;
+    @Autowired
+    protected SimplePagination simplePaginationLarge;
+    @Autowired
+    protected SimplePagination simplePaginationMedium;
+    @Autowired
+    protected SimplePagination simplePaginationSmall;
 
     @Autowired
     protected ProgressBar progressBarP;
@@ -370,29 +438,46 @@ public class ComponentSamplesFragment extends ScreenFragment {
         entityComboBoxMedium.setValue(usersDc.getItems().get(0));
         entityComboBoxSmall.setValue(usersDc.getItems().get(0));
 
+        multiSelectListSample.setOptionsList(usersDc.getItems());
+        multiSelectListRO.setOptionsList(usersDc.getItems());
+        multiSelectListDisabled.setOptionsList(usersDc.getItems());
+        multiSelectListRequired.setOptionsList(usersDc.getItems());
+        multiSelectListLarge.setOptionsList(usersDc.getItems());
+        multiSelectListMedium.setOptionsList(usersDc.getItems());
+        multiSelectListSmall.setOptionsList(usersDc.getItems());
+        multiSelectListRO.setValue(usersDc.getItems().stream().skip(2).collect(Collectors.toList()));
+        multiSelectListDisabled.setValue(usersDc.getItems().stream().skip(2).collect(Collectors.toList()));
+
+        singleSelectListSample.setOptionsList(usersDc.getItems());
+        singleSelectListRO.setOptionsList(usersDc.getItems());
+        singleSelectListDisabled.setOptionsList(usersDc.getItems());
+        singleSelectListRequired.setOptionsList(usersDc.getItems());
+        singleSelectListLarge.setOptionsList(usersDc.getItems());
+        singleSelectListMedium.setOptionsList(usersDc.getItems());
+        singleSelectListSmall.setOptionsList(usersDc.getItems());
+        singleSelectListRO.setValue(usersDc.getItems().get(0));
+        singleSelectListDisabled.setValue(usersDc.getItems().get(0));
+
         radioButtonGroupRO.setValue(Grade.STANDARD);
         radioButtonGroupD.setValue(Grade.STANDARD);
 
-        // todo rp tagPicker
-        /*tokenListRO.setOptionsList(usersDc.getItems());
-        tokenListSmall.setOptionsList(usersDc.getItems());
-        tokenListSimple.setOptionsList(usersDc.getItems());
-        tokenListSample.setOptionsList(usersDc.getItems());
-        tokenListMedium.setOptionsList(usersDc.getItems());
-        tokenListLarge.setOptionsList(usersDc.getItems());
-        tokenListInline.setOptionsList(usersDc.getItems());
-        tokenListDisabledSimple.setOptionsList(usersDc.getItems());
-        tokenListDisabled.setOptionsList(usersDc.getItems());
+        initTagPicker(tagPickerSample, usersDc);
+        initTagPicker(tagPickerInline, usersDc);
+        initTagPicker(tagPickerRO, usersDc);
+        initTagPicker(tagPickerDisabled, usersDc);
+        initTagPicker(tagPickerSmall, usersDc);
+        initTagPicker(tagPickerMedium, usersDc);
+        initTagPicker(tagPickerLarge, usersDc);
+        tagPickerRequired.setOptionsList(usersDc.getItems());
 
-        tokenListRO.setValue(tokenListRO.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListSmall.setValue(tokenListSmall.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListSimple.setValue(tokenListSimple.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListSample.setValue(tokenListSample.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListMedium.setValue(tokenListMedium.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListLarge.setValue(tokenListLarge.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListInline.setValue(tokenListInline.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListDisabledSimple.setValue(tokenListDisabledSimple.getOptions().getOptions().skip(2).collect(Collectors.toList()));
-        tokenListDisabled.setValue(tokenListDisabled.getOptions().getOptions().skip(2).collect(Collectors.toList()));*/
+        initTagField(tagFieldSample, usersDc);
+        initTagField(tagFieldClearable, usersDc);
+        initTagField(tagFieldRO, usersDc);
+        initTagField(tagFieldDisabled, usersDc);
+        initTagField(tagFieldLarge, usersDc);
+        initTagField(tagFieldMedium, usersDc);
+        initTagField(tagFieldSmall, usersDc);
+        tagFieldRequired.setSearchExecutor(this::userSearchExecutor);
 
         tabSheetStylesBox.getComponents().stream()
                 .filter(component -> component instanceof CheckBox)
@@ -479,9 +564,52 @@ public class ComponentSamplesFragment extends ScreenFragment {
         dayCalendar.addRangeSelectListener(dateCalendarRangeSelectEvent -> {
         });
 
-
         dayCalendar.setStartDate(new Date());
         dayCalendar.setEndDate(new Date());
+
+        initPaginationComponent(paginationSample, usersDc);
+        initPaginationComponent(paginationPerPageOptions, usersDc);
+        initPaginationComponent(paginationLarge, usersDc);
+        initPaginationComponent(paginationMedium, usersDc);
+        initPaginationComponent(paginationSmall, usersDc);
+
+        initPaginationComponent(simplePaginationSample, usersDc);
+        initPaginationComponent(simplePaginationItemsPerPage, usersDc);
+        initPaginationComponent(simplePaginationLarge, usersDc);
+        initPaginationComponent(simplePaginationMedium, usersDc);
+        initPaginationComponent(simplePaginationSmall, usersDc);
+    }
+
+    protected void initPaginationComponent(PaginationComponent pagination, CollectionContainer<User> usersDc) {
+        CollectionLoader<User> usersDl = dataComponents.createCollectionLoader();
+        usersDl.setContainer(dataComponents.createCollectionContainer(User.class));
+        usersDl.setLoadDelegate(userLoadContext -> {
+            int firstResult = userLoadContext.getQuery().getFirstResult();
+            int maxResults = userLoadContext.getQuery().getMaxResults();
+            return usersDc.getItems().stream()
+                    .skip(firstResult)
+                    .limit(maxResults)
+                    .collect(Collectors.toList());
+        });
+
+        pagination.setDataBinder(getApplicationContext().getBean(PaginationLoaderBinder.class, usersDl));
+        pagination.setTotalCountDelegate(() -> usersDc.getItems().size());
+        usersDl.load();
+    }
+
+    protected void initTagPicker(TagPicker<User> tagPicker, CollectionContainer<User> usersDc) {
+        tagPicker.setOptionsList(usersDc.getItems());
+        tagPicker.setValue(tagPicker.getOptions().getOptions().skip(2).collect(Collectors.toList()));
+
+        TagLookupAction lookupAction = (TagLookupAction) tagPicker.getAction(TagLookupAction.ID);
+        if (lookupAction != null) {
+            lookupAction.addActionPerformedListener(actionPerformedEvent -> {/* do nothing */});
+        }
+    }
+
+    protected void initTagField(TagField<User> tagField, CollectionContainer<User> usersDc) {
+        tagField.setSearchExecutor(this::userSearchExecutor);
+        tagField.setValue(usersDc.getItems().stream().skip(2).collect(Collectors.toList()));
     }
 
     protected List<User> userSearchExecutor(String searchString, Map<String, Object> searchParams) {
@@ -589,7 +717,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     public void onShowTrayBtnClick(Button.ClickEvent event) {
         notifications.create()
                 .withCaption("Tray notification")
-                .withDescription("Hi there! I’m a CUBA’s tray message")
+                .withDescription("Hi there! I’m a Jmix’s tray message")
                 .withType(Notifications.NotificationType.TRAY)
                 .show();
     }
@@ -598,7 +726,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     public void onShowHumanizedBtnClick(Button.ClickEvent event) {
         notifications.create()
                 .withCaption("Humanized notification")
-                .withDescription("Hi there! I’m a CUBA’s humanized message")
+                .withDescription("Hi there! I’m a Jmix’s humanized message")
                 .withType(Notifications.NotificationType.HUMANIZED)
                 .show();
     }
@@ -607,7 +735,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     public void onShowWarningBtnClick(Button.ClickEvent event) {
         notifications.create()
                 .withCaption("Warning notification")
-                .withDescription("Hi there! I’m a CUBA’s warning message")
+                .withDescription("Hi there! I’m a Jmix’s warning message")
                 .withType(Notifications.NotificationType.WARNING)
                 .withContentMode(ContentMode.HTML)
                 .show();
@@ -617,7 +745,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     public void onShowErrorBtnClick(Button.ClickEvent event) {
         notifications.create()
                 .withCaption("Error notification")
-                .withDescription("Hi there! I’m a CUBA’s error message")
+                .withDescription("Hi there! I’m a Jmix’s error message")
                 .withType(Notifications.NotificationType.ERROR)
                 .withContentMode(ContentMode.HTML)
                 .show();
@@ -627,7 +755,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     public void onShowSystemBtnClick(Button.ClickEvent event) {
         notifications.create()
                 .withCaption("System notification")
-                .withDescription("Hi there! I’m a CUBA’s system message")
+                .withDescription("Hi there! I’m a Jmix’s system message")
                 .withType(Notifications.NotificationType.SYSTEM)
                 .withContentMode(ContentMode.HTML)
                 .show();

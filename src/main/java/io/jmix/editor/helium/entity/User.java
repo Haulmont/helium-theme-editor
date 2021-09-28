@@ -1,33 +1,23 @@
 package io.jmix.editor.helium.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.JmixId;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.UUID;
 
-@JmixEntity
-@Table(name = "HELIUM_USER")
-@Entity(name = "helium_User")
+@JmixEntity(name = "helium_User")
 public class User {
     @JmixGeneratedValue
-    @Column(name = "ID", nullable = false)
-    @Id
+    @JmixId
     private UUID id;
 
-    @Column(name = "USERNAME")
     private String username;
 
-    @InstanceName
-    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "ACTIVE")
     private Boolean active;
 
     public String getName() {
@@ -60,5 +50,11 @@ public class User {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"name", "username"})
+    public String getInstanceName() {
+        return String.format("%s [%s]", name, username);
     }
 }
