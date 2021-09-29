@@ -23,6 +23,8 @@ public class ThemeVariableField extends CompositeComponent<Form>
 
     public static final String RGB_POSTFIX = "_rgb";
 
+    protected static final String VALUE_FIELD_DEFAULT_VALUE_STYLENAME = "default-value";
+
     protected static final String SET_THEME_VARIABLE_VOID = "setThemeVariable('%s', '%s')";
     protected static final String REMOVE_THEME_VARIABLE_VOID = "removeThemeVariable('%s')";
 
@@ -38,6 +40,8 @@ public class ThemeVariableField extends CompositeComponent<Form>
     protected ThemeVariable themeVariable;
     protected Template currentTemplate;
     protected String parentValue;
+
+    protected Subscription valueFieldSubscription;
 
     public ThemeVariableField() {
         addCreateListener(this::onCreate);
@@ -306,6 +310,7 @@ public class ThemeVariableField extends CompositeComponent<Form>
         String placeHolder = valueField.getInputPrompt();
         if (!placeHolder.startsWith("var(")) {
             setInputPrompt(parentColorValue);
+            setSilentlyValueFieldValue(parentColorValue);
         }
     }
 
@@ -331,35 +336,39 @@ public class ThemeVariableField extends CompositeComponent<Form>
     }
 
     protected void initValueField() {
-        valueField.addValueChangeListener(valueChangeEvent -> {
-            String value = valueChangeEvent.getValue();
-            if (value == null) {
-                if (parentValue != null) {
-                    value = parentValue;
-                } else if (themeVariable.getThemeVariableDetails(currentTemplate) != null) {
-                    value = themeVariable.getThemeVariableDetails(currentTemplate).getValue();
-                }
-            }
+        valueFieldSubscription = valueField.addValueChangeListener(this::onValueFieldValueChange);
+    }
 
-            if (!ThemeVariablesManager.TRANSPARENT_COLOR_VALUE.equals(value)) {
-                value = ThemeVariableUtils.getColorString(value);
+    protected void onValueFieldValueChange(HasValue.ValueChangeEvent<String> event) {
+        String value = event.getValue();
+        if (value == null) {
+            if (parentValue != null) {
+                value = parentValue;
+            } else if (themeVariable.getThemeVariableDetails(currentTemplate) != null) {
+                value = themeVariable.getThemeVariableDetails(currentTemplate).getValue();
             }
+        }
 
-            if (ThemeVariablesManager.TRANSPARENT_COLOR_VALUE.equals(value)) {
-                colorValueField.setValue(null);
-            } else {
-                colorValueField.setValue(value);
-            }
+        if (!ThemeVariablesManager.TRANSPARENT_COLOR_VALUE.equals(value)) {
+            value = ThemeVariableUtils.getColorString(value);
+        }
 
-            boolean valueIsNull = valueChangeEvent.getValue() == null;
-            resetBtn.setEnabled(!valueIsNull);
+        if (ThemeVariablesManager.TRANSPARENT_COLOR_VALUE.equals(value)) {
+            colorValueField.setValue(null);
+        } else {
+            colorValueField.setValue(value);
+        }
 
-            if (valueIsNull && parentValue == null) {
-                removeThemeVariable();
-            } else {
-                setThemeVariable(value, true);
-            }
-        });
+        boolean valueIsNull = event.getValue() == null;
+        resetBtn.setEnabled(!valueIsNull);
+
+        if (valueIsNull && parentValue == null) {
+            removeThemeVariable();
+        } else {
+            setThemeVariable(value, true);
+        }
+
+        valueField.removeStyleName(VALUE_FIELD_DEFAULT_VALUE_STYLENAME);
     }
 
     protected void initResetBtn() {
@@ -405,7 +414,17 @@ public class ThemeVariableField extends CompositeComponent<Form>
 
         if (parentValue == null) {
             setInputPrompt(details.getPlaceHolder());
+            setSilentlyValueFieldValue(details.getPlaceHolder());
         }
+    }
+
+    protected void setSilentlyValueFieldValue(String value) {
+        valueFieldSubscription.remove();
+
+        valueField.addStyleName(VALUE_FIELD_DEFAULT_VALUE_STYLENAME);
+        valueField.setValue(value);
+
+        valueFieldSubscription = valueField.addValueChangeListener(this::onValueFieldValueChange);
     }
 
     protected void setThemeVariable(String value, boolean isBaseThemeMode) {

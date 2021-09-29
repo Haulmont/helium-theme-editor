@@ -26,6 +26,10 @@
         padding-left: $v-layout-margin-left;
         padding-right: $v-unit-size - $v-layout-margin-left;
       }
+
+      .default-value {
+        color: var(--secondary-color);
+      }
     }
   }
 }
