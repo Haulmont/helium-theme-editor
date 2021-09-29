@@ -15,7 +15,6 @@
     }
 
     .notifications-box {
-      // todo rp error in Ultimate Idea
       width: calc(100% - $margin) !important;
 
       .jmix-flowlayout > * {
@@ -68,7 +67,7 @@
 
       .comboboxes-box,
       .textfields-box,
-      .tagpicker-box,
+      .tagfield-box,
       .labels-box {
         width: calc(25% - $margin) !important;
       }

@@ -45,14 +45,6 @@
                                   caption="msg://advancedModeLabel.value"/>
                     </hbox>
                 </scrollBox>
-                <cssLayout id="controlBox"
-                           stylename="jmix-drawer-footer"
-                           width="100%">
-                    <button id="collapseDrawerButton"
-                            icon="CHEVRON_LEFT"
-                            stylename="jmix-drawer-collapse-button"
-                            description="msg://sideMenuCollapse"/>
-                </cssLayout>
             </drawer>
             <workArea id="workArea"
                       stylename="jmix-workarea"

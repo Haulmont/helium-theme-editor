@@ -87,8 +87,8 @@
                                 </columns>
                             </table>
                         </vbox>
-                        <vbox id="tagPickerBox" margin="true" stylename="card tagpicker-box" height="300px">
-                            <tagPicker id="basicTagPicker" width="100%" height="100%"/>
+                        <vbox id="tagFieldBox" margin="true" stylename="card tagfield-box" height="300px">
+                            <tagField id="basicTagField" width="100%" clearAllVisible="true"/>
                         </vbox>
                         <vbox spacing="true" stylename="radiobutton-checkbox-box">
                             <vbox id="radioButtonGroupBox" stylename="card" height="144px">

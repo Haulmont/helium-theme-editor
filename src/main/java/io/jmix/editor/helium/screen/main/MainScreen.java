@@ -12,9 +12,7 @@ import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.action.DialogAction;
 import io.jmix.ui.component.*;
-import io.jmix.ui.component.mainwindow.Drawer;
 import io.jmix.ui.event.UIRefreshEvent;
-import io.jmix.ui.icon.JmixIcon;
 import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
 import io.jmix.ui.theme.ThemeVariantsManager;
@@ -42,36 +40,31 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
     protected static final String OVERLAY_CLASSNAME = "v-app helium appui v-overlay-container";
 
     @Autowired
-    private AppWorkArea workArea;
+    protected AppWorkArea workArea;
     @Autowired
-    private Drawer drawer;
+    protected RadioButtonGroup<Template> baseThemeModeField;
     @Autowired
-    private Button collapseDrawerButton;
+    protected ComboBox<Template> templateField;
     @Autowired
-    private RadioButtonGroup<Template> baseThemeModeField;
-    @Autowired
-    private ComboBox<Template> templateField;
-    @Autowired
-    private ScrollBoxLayout settingsPanel;
+    protected ScrollBoxLayout settingsPanel;
 
     @Autowired
-    private Dialogs dialogs;
+    protected Dialogs dialogs;
     @Autowired
-    private UiComponents uiComponents;
+    protected UiComponents uiComponents;
     @Autowired
-    private ScreenBuilders screenBuilders;
+    protected ScreenBuilders screenBuilders;
     @Autowired
-    private ThemeVariantsManager variantsManager;
+    protected ThemeVariantsManager variantsManager;
     @Autowired
-    private MessageBundle messageBundle;
+    protected MessageBundle messageBundle;
     @Autowired
-    private ThemeVariablesManager themeVariablesManager;
+    protected ThemeVariablesManager themeVariablesManager;
 
     protected List<ModifiedThemeVariableDetails> modifiedThemeVariables = new ArrayList<>();
     protected List<ModifiedThemeVariableDetails> modifiedColorTemplateThemeVariables = new ArrayList<>();
     protected Template currentTemplate;
     protected Template customTemplate = new Template(Templates.CUSTOM);
-
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -85,16 +78,6 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
     @Override
     public AppWorkArea getWorkArea() {
         return workArea;
-    }
-
-    @Subscribe("collapseDrawerButton")
-    private void onCollapseDrawerButtonClick(Button.ClickEvent event) {
-        drawer.toggle();
-        if (drawer.isCollapsed()) {
-            collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_RIGHT);
-        } else {
-            collapseDrawerButton.setIconFromSet(JmixIcon.CHEVRON_LEFT);
-        }
     }
 
     @EventListener
@@ -141,13 +124,13 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
     @Subscribe("resetBtn")
     public void onResetBtnClick(Button.ClickEvent event) {
         if (customTemplate.equals(templateField.getValue())) {
-            dialogs.createOptionDialog(/*Dialogs.MessageType.WARNING*/) // todo rp
+            dialogs.createOptionDialog()
                     .withCaption(messageBundle.getMessage("warningNotification.caption"))
                     .withContentMode(ContentMode.HTML)
                     .withMessage(messageBundle.getMessage("warningNotification.message"))
                     .withActions(
                             new DialogAction(DialogAction.Type.OK)
-                                    .withHandler(actionPerformedEvent -> {
+                                    .withHandler(actionPerformEvent -> {
                                         modifiedThemeVariables = new ArrayList<>();
                                         modifiedColorTemplateThemeVariables = new ArrayList<>();
                                         updateFieldsByColorTemplate(baseThemeModeField.getValue());
@@ -331,7 +314,7 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
     }
 
     protected void showConfirmationDialog(OptionsField<Template, Template> optionsField, Template value, Template prevValue) {
-        dialogs.createOptionDialog(/*Dialogs.MessageType.WARNING*/) // todo rp implement
+        dialogs.createOptionDialog()
                 .withCaption(messageBundle.getMessage("warningNotification.caption"))
                 .withContentMode(ContentMode.HTML)
                 .withMessage(messageBundle.getMessage("warningNotification.message"))

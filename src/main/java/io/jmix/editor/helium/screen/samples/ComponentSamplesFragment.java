@@ -59,7 +59,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     @Autowired
     protected Table<User> basicTable;
     @Autowired
-    protected TagPicker<User> basicTagPicker;
+    protected TagField<User> basicTagField;
     @Autowired
     protected ComboBox<String> basicRequiredComboBox;
     @Autowired
@@ -112,11 +112,7 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected void initContainerSamples() {
         basicTable.setItems(new ContainerTableItems<>(usersDc));
 
-        basicTagPicker.setOptionsList(usersDc.getItems());
-        basicTagPicker.setValue(basicTagPicker.getOptions()
-                .getOptions()
-                .skip(2)
-                .collect(Collectors.toList()));
+        initTagField(basicTagField, usersDc, this::userSearchExecutor);
     }
 
     protected List<User> generateUsersSampleData() {
@@ -498,14 +494,14 @@ public class ComponentSamplesFragment extends ScreenFragment {
         initTagPicker(tagPickerMedium, usersDc);
         initTagPicker(tagPickerLarge, usersDc);
 
-        initTagField(tagFieldSample, usersDc);
-        initTagField(tagFieldClearable, usersDc);
-        initTagField(tagFieldRO, usersDc);
-        initTagField(tagFieldDisabled, usersDc);
+        initTagField(tagFieldSample, usersDc, this::userSearchExecutor);
+        initTagField(tagFieldClearable, usersDc, this::userSearchExecutor);
+        initTagField(tagFieldRO, usersDc, this::userSearchExecutor);
+        initTagField(tagFieldDisabled, usersDc, this::userSearchExecutor);
         tagFieldRequired.setSearchExecutor(this::userSearchExecutor);
-        initTagField(tagFieldLarge, usersDc);
-        initTagField(tagFieldMedium, usersDc);
-        initTagField(tagFieldSmall, usersDc);
+        initTagField(tagFieldLarge, usersDc, this::userSearchExecutor);
+        initTagField(tagFieldMedium, usersDc, this::userSearchExecutor);
+        initTagField(tagFieldSmall, usersDc, this::userSearchExecutor);
 
         tabSheetStylesBox.getComponents().stream()
                 .filter(component -> component instanceof CheckBox)
@@ -670,14 +666,12 @@ public class ComponentSamplesFragment extends ScreenFragment {
         tagPicker.setOptionsList(usersDc.getItems());
         tagPicker.setValue(tagPicker.getOptions().getOptions().skip(2).collect(Collectors.toList()));
 
-        TagLookupAction lookupAction = (TagLookupAction) tagPicker.getAction(TagLookupAction.ID);
-        if (lookupAction != null) {
-            lookupAction.addActionPerformedListener(actionPerformedEvent -> {/* do nothing */});
-        }
+        setupStubForActionPerformed(tagPicker, TagLookupAction.ID);
     }
 
-    protected void initTagField(TagField<User> tagField, CollectionContainer<User> usersDc) {
-        tagField.setSearchExecutor(this::userSearchExecutor);
+    protected void initTagField(TagField<User> tagField, CollectionContainer<User> usersDc,
+                                SuggestionFieldComponent.SearchExecutor<User> searchExecutor) {
+        tagField.setSearchExecutor(searchExecutor);
         tagField.setValue(usersDc.getItems().stream().skip(2).collect(Collectors.toList()));
     }
 
