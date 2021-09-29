@@ -7,7 +7,11 @@ import io.jmix.editor.helium.entity.User;
 import io.jmix.ui.Dialogs;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.UiComponents;
+import io.jmix.ui.action.Action;
+import io.jmix.ui.action.BaseAction;
 import io.jmix.ui.action.DialogAction;
+import io.jmix.ui.action.entitypicker.EntityLookupAction;
+import io.jmix.ui.action.entitypicker.EntityOpenAction;
 import io.jmix.ui.action.tagpicker.TagLookupAction;
 import io.jmix.ui.app.inputdialog.DialogActions;
 import io.jmix.ui.app.inputdialog.InputParameter;
@@ -181,17 +185,20 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected ComboBox<Grade> comboBoxD;
 
     @Autowired
+    protected EntityPicker<User> entityPicker;
+    @Autowired
     protected EntityPicker<User> entityPickerRO;
     @Autowired
     protected EntityPicker<User> entityPickerD;
     @Autowired
-    protected EntityPicker<User> entityPickerSmall;
+    protected EntityPicker<User> entityPickerLarge;
     @Autowired
     protected EntityPicker<User> entityPickerMedium;
     @Autowired
-    protected EntityPicker<User> entityPickerLarge;
+    protected EntityPicker<User> entityPickerR;
     @Autowired
-    protected EntityPicker<User> entityPicker;
+    protected EntityPicker<User> entityPickerSmall;
+
 
     @Autowired
     protected EntityComboBox<User> entityComboBoxR;
@@ -378,17 +385,17 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected SuggestionField<User> suggestionFieldSample;
 
     @Autowired
+    protected EntitySuggestionField<User> entitySuggestionFieldSample;
+    @Autowired
+    protected EntitySuggestionField<User> entitySuggestionFieldReadonly;
+    @Autowired
+    protected EntitySuggestionField<User> entitySuggestionFieldDisabled;
+    @Autowired
     protected EntitySuggestionField<User> entitySuggestionFieldLarge;
     @Autowired
     protected EntitySuggestionField<User> entitySuggestionFieldMedium;
     @Autowired
     protected EntitySuggestionField<User> entitySuggestionFieldSmall;
-    @Autowired
-    protected EntitySuggestionField<User> entitySuggestionFieldDisabled;
-    @Autowired
-    protected EntitySuggestionField<User> entitySuggestionFieldReadonly;
-    @Autowired
-    protected EntitySuggestionField<User> entitySuggestionFieldSample;
 
     @Autowired
     protected Calendar<Date> monthCalendar;
@@ -396,6 +403,34 @@ public class ComponentSamplesFragment extends ScreenFragment {
     protected Calendar<Date> weekCalendar;
     @Autowired
     protected Calendar<Date> dayCalendar;
+
+    @Autowired
+    protected ValuePicker<String> valuePickerSample;
+    @Autowired
+    protected ValuePicker<String> valuePickerRO;
+    @Autowired
+    protected ValuePicker<String> valuePickerDisabled;
+
+    @Autowired
+    protected ValuePicker<String> valuePickerLarge;
+    @Autowired
+    protected ValuePicker<String> valuePickerMedium;
+    @Autowired
+    protected ValuePicker<String> valuePickerSmall;
+
+    @Autowired
+    private ValuesPicker<String> valuesPickerSample;
+    @Autowired
+    private ValuesPicker<String> valuesPickerRO;
+    @Autowired
+    private ValuesPicker<String> valuesPickerDisabled;
+    @Autowired
+    private ValuesPicker<String> valuesPickerLarge;
+    @Autowired
+    private ValuesPicker<String> valuesPickerMedium;
+    @Autowired
+    private ValuesPicker<String> valuesPickerSmall;
+
 
     @Autowired
     protected Dialogs dialogs;
@@ -415,28 +450,21 @@ public class ComponentSamplesFragment extends ScreenFragment {
         checkBoxRO2.setValue(true);
         checkBoxD2.setValue(true);
 
-        entityPicker.setValue(usersDc.getItems().get(0));
-        entityPickerRO.setValue(usersDc.getItems().get(0));
-        entityPickerD.setValue(usersDc.getItems().get(0));
-        entityPickerLarge.setValue(usersDc.getItems().get(0));
-        entityPickerMedium.setValue(usersDc.getItems().get(0));
-        entityPickerSmall.setValue(usersDc.getItems().get(0));
+        initEntityPicker(entityPicker, usersDc);
+        initEntityPicker(entityPickerRO, usersDc);
+        initEntityPicker(entityPickerD, usersDc);
+        setupStubForActionPerformed(entityPickerR, EntityLookupAction.ID);
+        initEntityPicker(entityPickerLarge, usersDc);
+        initEntityPicker(entityPickerMedium, usersDc);
+        initEntityPicker(entityPickerSmall, usersDc);
 
-        entityComboBox.setOptionsList(usersDc.getItems());
-        entityComboBoxR.setOptionsList(usersDc.getItems());
-        entityComboBoxRO.setOptionsList(usersDc.getItems());
-        entityComboBoxD.setOptionsList(usersDc.getItems());
-        entityComboBoxLarge.setOptionsList(usersDc.getItems());
-        entityComboBoxMedium.setOptionsList(usersDc.getItems());
-        entityComboBoxSmall.setOptionsList(usersDc.getItems());
-
-        entityComboBox.setValue(usersDc.getItems().get(0));
-        entityComboBoxR.setValue(usersDc.getItems().get(0));
-        entityComboBoxRO.setValue(usersDc.getItems().get(0));
-        entityComboBoxD.setValue(usersDc.getItems().get(0));
-        entityComboBoxLarge.setValue(usersDc.getItems().get(0));
-        entityComboBoxMedium.setValue(usersDc.getItems().get(0));
-        entityComboBoxSmall.setValue(usersDc.getItems().get(0));
+        initEntityComboBox(entityComboBox, usersDc);
+        initEntityComboBox(entityComboBoxRO, usersDc);
+        initEntityComboBox(entityComboBoxD, usersDc);
+        setupStubForActionPerformed(entityComboBoxR, EntityLookupAction.ID);
+        initEntityComboBox(entityComboBoxLarge, usersDc);
+        initEntityComboBox(entityComboBoxMedium, usersDc);
+        initEntityComboBox(entityComboBoxSmall, usersDc);
 
         multiSelectListSample.setOptionsList(usersDc.getItems());
         multiSelectListRO.setOptionsList(usersDc.getItems());
@@ -465,19 +493,19 @@ public class ComponentSamplesFragment extends ScreenFragment {
         initTagPicker(tagPickerInline, usersDc);
         initTagPicker(tagPickerRO, usersDc);
         initTagPicker(tagPickerDisabled, usersDc);
+        tagPickerRequired.setOptionsList(usersDc.getItems());
         initTagPicker(tagPickerSmall, usersDc);
         initTagPicker(tagPickerMedium, usersDc);
         initTagPicker(tagPickerLarge, usersDc);
-        tagPickerRequired.setOptionsList(usersDc.getItems());
 
         initTagField(tagFieldSample, usersDc);
         initTagField(tagFieldClearable, usersDc);
         initTagField(tagFieldRO, usersDc);
         initTagField(tagFieldDisabled, usersDc);
+        tagFieldRequired.setSearchExecutor(this::userSearchExecutor);
         initTagField(tagFieldLarge, usersDc);
         initTagField(tagFieldMedium, usersDc);
         initTagField(tagFieldSmall, usersDc);
-        tagFieldRequired.setSearchExecutor(this::userSearchExecutor);
 
         tabSheetStylesBox.getComponents().stream()
                 .filter(component -> component instanceof CheckBox)
@@ -522,12 +550,12 @@ public class ComponentSamplesFragment extends ScreenFragment {
         suggestionFieldMedium.setSearchExecutor(this::userSearchExecutor);
         suggestionFieldSmall.setSearchExecutor(this::userSearchExecutor);
 
-        entitySuggestionFieldSample.setSearchExecutor(this::userSearchExecutor);
-        entitySuggestionFieldReadonly.setSearchExecutor(this::userSearchExecutor);
-        entitySuggestionFieldDisabled.setSearchExecutor(this::userSearchExecutor);
-        entitySuggestionFieldLarge.setSearchExecutor(this::userSearchExecutor);
-        entitySuggestionFieldMedium.setSearchExecutor(this::userSearchExecutor);
-        entitySuggestionFieldSmall.setSearchExecutor(this::userSearchExecutor);
+        initEntitySuggestionField(entitySuggestionFieldSample, this::userSearchExecutor);
+        initEntitySuggestionField(entitySuggestionFieldReadonly, this::userSearchExecutor);
+        initEntitySuggestionField(entitySuggestionFieldDisabled, this::userSearchExecutor);
+        initEntitySuggestionField(entitySuggestionFieldLarge, this::userSearchExecutor);
+        initEntitySuggestionField(entitySuggestionFieldMedium, this::userSearchExecutor);
+        initEntitySuggestionField(entitySuggestionFieldSmall, this::userSearchExecutor);
 
         ListCalendarEventProvider eventProvider = new ListCalendarEventProvider();
 
@@ -578,6 +606,47 @@ public class ComponentSamplesFragment extends ScreenFragment {
         initPaginationComponent(simplePaginationLarge, usersDc);
         initPaginationComponent(simplePaginationMedium, usersDc);
         initPaginationComponent(simplePaginationSmall, usersDc);
+
+        valuePickerSample.setValue("Value");
+        valuePickerRO.setValue("Value");
+        valuePickerDisabled.setValue("Value");
+        valuePickerLarge.setValue("Value");
+        valuePickerMedium.setValue("Value");
+        valuePickerSmall.setValue("Value");
+
+        valuesPickerSample.setValue(Arrays.asList("Value 1", "Value 2"));
+        valuesPickerRO.setValue(Arrays.asList("Value 1", "Value 2"));
+        valuesPickerDisabled.setValue(Arrays.asList("Value 1", "Value 2"));
+        valuesPickerLarge.setValue(Arrays.asList("Value 1", "Value 2"));
+        valuesPickerMedium.setValue(Arrays.asList("Value 1", "Value 2"));
+        valuesPickerSmall.setValue(Arrays.asList("Value 1", "Value 2"));
+    }
+
+    protected void initEntityPicker(EntityPicker<User> entityPicker, CollectionContainer<User> usersDc) {
+        entityPicker.setValue(usersDc.getItems().get(0));
+
+        setupStubForActionPerformed(entityPicker, EntityLookupAction.ID);
+    }
+
+    protected void initEntityComboBox(EntityComboBox<User> entityComboBox, CollectionContainer<User> usersDc) {
+        entityComboBox.setOptionsList(usersDc.getItems());
+        entityComboBox.setValue(usersDc.getItems().get(0));
+
+        setupStubForActionPerformed(entityComboBox, EntityLookupAction.ID);
+    }
+
+    protected void initEntitySuggestionField(EntitySuggestionField<User> entitySuggestionField,
+                                             SuggestionFieldComponent.SearchExecutor<User> searchExecutor) {
+        entitySuggestionField.setSearchExecutor(searchExecutor);
+
+        setupStubForActionPerformed(entitySuggestionField, EntityOpenAction.ID);
+    }
+
+    protected void setupStubForActionPerformed(ActionsHolder actionsHolder, String actionId) {
+        Action action = actionsHolder.getAction(actionId);
+        if (action instanceof BaseAction) {
+            ((BaseAction) action).addActionPerformedListener(actionPerformedEvent -> {/* do nothing */});
+        }
     }
 
     protected void initPaginationComponent(PaginationComponent pagination, CollectionContainer<User> usersDc) {
