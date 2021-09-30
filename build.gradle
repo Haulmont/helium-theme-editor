@@ -1,12 +1,12 @@
 plugins {
-    id 'io.jmix' version '1.1.0-M5'
+    id 'io.jmix' version '1.0.2'
     id 'java'
 }
 
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.1.0-SNAPSHOT'
+    bomVersion = '1.0.2'
     projectId = 'helium'
 }
 
