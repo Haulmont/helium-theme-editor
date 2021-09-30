@@ -1,5 +1,6 @@
 package io.jmix.editor.helium.tools;
 
+import io.jmix.editor.helium.HeliumEditorProperties;
 import org.slf4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -197,7 +198,7 @@ public class ThemeVariablesManager implements ApplicationContextAware {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(ThemeVariablesManager.class);
 
     @Autowired
-    protected Environment environment;
+    protected HeliumEditorProperties heliumEditorProperties;
     protected ApplicationContext applicationContext;
 
     /**
@@ -327,7 +328,7 @@ public class ThemeVariablesManager implements ApplicationContextAware {
      */
     protected void initThemeVariables() {
         try {
-            String themeVariablesFilePath = environment.getProperty("helium.editor.themeVariablesFilePath");
+            String themeVariablesFilePath = heliumEditorProperties.getThemeVariablesFilePath();
             if (themeVariablesFilePath == null) {
                 return;
             }
@@ -379,10 +380,10 @@ public class ThemeVariablesManager implements ApplicationContextAware {
 
                 matcher = MODULE_PATTERN.matcher(line);
                 if (matcher.find()) {
-                    module = matcher.group();
+                    module = matcher.group().trim();
                 }
 
-                if (module != null) {
+                if (module != null && isModuleInWhitelist(module)) {
                     matcher = THEME_VARIABLE_PATTERN.matcher(line);
                     if (matcher.find()) {
                         String name = matcher.group(NAME_GROUP);
@@ -469,6 +470,10 @@ public class ThemeVariablesManager implements ApplicationContextAware {
         } catch (IOException e) {
             log.error("Error parsing file with theme variables", e);
         }
+    }
+
+    protected boolean isModuleInWhitelist(String module) {
+        return !heliumEditorProperties.getExcludedThemeVariableModules().contains(module);
     }
 
     /**
