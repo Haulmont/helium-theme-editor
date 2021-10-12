@@ -61,6 +61,6 @@ bootBuildImage {
     if (rootProject.hasProperty('jmixDockerTag')) {
         imageName = rootProject['jmixDockerTag']
     } else {
-        imageName = 'docker.haulmont.com/platform/infrastructure/demo-cuba-apps-docker/jmix-demo-petclinic:testing'
+        imageName = 'docker.haulmont.com/platform/infrastructure/demo-cuba-apps-docker/jmix-demo-helium-editor:latest'
     }
 }
